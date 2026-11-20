@@ -28,6 +28,17 @@ just baseline    # v4-rules comparison; no model needed
 just evaluate
 ```
 
+If a cached selection failed or was truncated, retry only that company explicitly:
+
+```bash
+uv run python -m company_summaries.pipeline --company SYN-000029 --retry-invalid
+just evaluate
+```
+
+The retry makes at most one new request per failed company. Failed responses remain intact;
+new responses are saved as numbered `.attempt-0002.json` files. A valid cached response is reused,
+including a successful retry, so the flag does not regenerate already valid selections.
+
 No API key is needed for Ollama. Model downloads and new local inference are optional for reviewing the saved submission.
 The model selects optional facts; Python computes figures, preserves required concerns, and renders the summary.
 Local model output is cached in `runs/`, with sentence-level source paths in `evaluations/v4-evidence.json`.

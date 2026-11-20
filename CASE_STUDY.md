@@ -47,6 +47,8 @@ The model uses temperature 0, seed 42, thinking disabled and an 8,192-token cont
 
 Every response is saved under `runs/`. Cache keys include the facts, prompt, model name, schema and settings. A one-company refresh preserves other saved companies. Summary and evidence exports are committed through one authoritative snapshot after generation completes. Ordinary write failures restore the previous exports; after a hard interruption the viewer can still read the previous complete snapshot, while evaluation rejects inconsistent exports. The final system adds no libraries beyond the supplied environment.
 
+An explicit `--retry-invalid` option recovers failed cached selections without deleting the original response or silently spending quota on repeated calls. Each retry is archived as a numbered attempt; successful attempts are reused normally. Review packets also freeze on any entered feedback, rather than waiting for a final preference, so notes and partial scores cannot become attached to regenerated text.
+
 Run `just serve` to inspect saved outputs and `just check` to reproduce checks without calling a model. `just generate` is optional and uses the local API. Observed request times and token counts are reported in [evaluations/RESULTS.md](evaluations/RESULTS.md); they are not estimates of total development time. There are no billed generation API calls, although local compute is not cost-free.
 
 ## How you know whether it's good

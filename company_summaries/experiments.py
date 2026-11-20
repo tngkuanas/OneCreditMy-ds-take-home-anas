@@ -179,9 +179,19 @@ def stress_test():
         raise ValueError("Some v4 stress requirements failed")
 
 
+def has_review_input(document):
+    if any(value not in (None, "", [], {}) for key, value in document.items() if key not in {"status", "ratings"}):
+        return True
+    if document.get("status") not in (None, "", "pending_human_review"):
+        return True
+    return any(
+        value not in (None, "", [], {}) for row in document.get("ratings", []) for key, value in row.items() if key != "pair_id"
+    )
+
+
 def review_packet():
     ratings_path = ROOT / "evaluations/review-ratings.json"
-    if ratings_path.exists() and any(row["preference"] is not None for row in json.loads(ratings_path.read_text())["ratings"]):
+    if ratings_path.exists() and has_review_input(json.loads(ratings_path.read_text())):
         # Keep the packet and its key fixed once anyone starts reviewing it.
         return
     ids = ["SYN-000029", "SYN-000217", "SYN-000286", "SYN-000302", "SYN-000451", "SYN-000545", "SYN-001203", "SYN-001829"]
@@ -205,6 +215,7 @@ def review_packet():
         "For each pair, choose A, B, tie, or neither. Judge factual accuracy first, then important omissions, "
         "clarity, and usefulness for deciding what to investigate. Record errors and time spent in `review-ratings.json`.",
         "A tie is valid. If outputs are identical, mark a tie. Do not infer a supplier approval from a summary.",
+        "The packet freezes as soon as any rating, note, timing, error, omission or reviewer information is entered.",
         "",
         "There are two comparisons: writing/coverage changes and model versus rules selection. "
         "Their assignments are hidden in the separate key. This is version blinding, not a claim of double-blind research.",

@@ -180,6 +180,9 @@ def main():
             "- Evidence paths must match each fact's source fields and financial years; "
             "path existence alone does not satisfy the provenance checks.",
             "- Partial refreshes recover the complete committed collection even when exports are missing.",
+            "- Failed cached selections can be retried explicitly with --retry-invalid; "
+            "each response is retained, and successful retries are reused.",
+            "- Review packets freeze on any entered feedback, including notes or scores before a preference.",
             f"- Synthetic stress requirements: v3 {stress['versions']['v3']['passed']}/24; "
             f"v4 {stress['versions']['v4']['passed']}/24.",
             "- These are synthetic regression requirements, including newly added coverage; "

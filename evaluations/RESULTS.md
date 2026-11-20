@@ -68,6 +68,8 @@ just evaluate
 - Reports fingerprint source records as well as outputs; source changes invalidate cached green checks.
 - Evidence paths must match each fact's source fields and financial years; path existence alone does not satisfy the provenance checks.
 - Partial refreshes recover the complete committed collection even when exports are missing.
+- Failed cached selections can be retried explicitly with --retry-invalid; each response is retained, and successful retries are reused.
+- Review packets freeze on any entered feedback, including notes or scores before a preference.
 - Synthetic stress requirements: v3 12/24; v4 24/24.
 - These are synthetic regression requirements, including newly added coverage; they are not independent real-company accuracy measurements.
 - Stress tests request relevant optional facts explicitly, isolating fact extraction and rendering from model prioritisation. Human comparison is still pending.

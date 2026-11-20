@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import re
 import time
 import urllib.error
 import urllib.request
@@ -53,6 +54,8 @@ def render(company, selected):
 
 
 def parse_selection(response, facts):
+    if not isinstance(response, dict):
+        raise TypeError("Expected a response object")
     if response.get("done_reason") == "length":
         raise ValueError("Truncated selection")
     parsed = json.loads(response["message"]["content"])
@@ -83,7 +86,23 @@ def selection_schema(facts):
     }
 
 
-def select(company, facts, model, version="v3"):
+def cache_attempts(path):
+    attempts = [(1, path)] if path.exists() else []
+    for candidate in path.parent.glob(f"{path.stem}.attempt-*.json"):
+        match = re.fullmatch(re.escape(path.stem) + r"\.attempt-(\d+)\.json", candidate.name)
+        if match:
+            attempts.append((int(match[1]), candidate))
+    return sorted(attempts, key=lambda item: item[0])
+
+
+def read_cache(path):
+    record = json.loads(path.read_text())
+    if not isinstance(record, dict):
+        raise TypeError("Expected a cached response object")
+    return record
+
+
+def select(company, facts, model, version="v3", retry_invalid=False):
     prompt = (ROOT / "prompts" / f"{version}.txt").read_text()
     body = {
         "model": model,
@@ -98,26 +117,39 @@ def select(company, facts, model, version="v3"):
     }
     digest = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()
     path = ROOT / "runs" / version / f"{company['registrationNumber']}-{digest}.json"
-    if path.exists():
-        record = json.loads(path.read_text())
-    else:
-        start = time.monotonic()
-        request = urllib.request.Request(
-            ENDPOINT, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"}, method="POST"
-        )
+    attempts = cache_attempts(path)
+    latest_failure = None
+    for _, candidate in reversed(attempts):
+        record = {}
         try:
-            with urllib.request.urlopen(request, timeout=600) as response:  # noqa: S310 -- fixed loopback endpoint
-                raw = json.load(response)
-        except (urllib.error.URLError, TimeoutError) as exc:
-            raise RuntimeError("Ollama request failed; start Ollama and check the installed model.") from exc
-        record = {
-            "created_at": datetime.now(UTC).isoformat(),
-            "endpoint": ENDPOINT,
-            "request": body,
-            "response": raw,
-            "elapsed_seconds": round(time.monotonic() - start, 3),
-        }
-        write_json(path, record)
+            record = read_cache(candidate)
+            selected = parse_selection(record["response"], facts)
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            if latest_failure is None:
+                latest_failure = ([], str(candidate.relative_to(ROOT)), record, str(exc))
+        else:
+            return selected, str(candidate.relative_to(ROOT)), record, None
+    if latest_failure is not None and not retry_invalid:
+        return latest_failure
+    if attempts:
+        path = path.with_name(f"{path.stem}.attempt-{max(n for n, _ in attempts) + 1:04d}.json")
+    start = time.monotonic()
+    request = urllib.request.Request(
+        ENDPOINT, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"}, method="POST"
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=600) as response:  # noqa: S310 -- fixed loopback endpoint
+            raw = json.load(response)
+    except (urllib.error.URLError, TimeoutError) as exc:
+        raise RuntimeError("Ollama request failed; start Ollama and check the installed model.") from exc
+    record = {
+        "created_at": datetime.now(UTC).isoformat(),
+        "endpoint": ENDPOINT,
+        "request": body,
+        "response": raw,
+        "elapsed_seconds": round(time.monotonic() - start, 3),
+    }
+    write_json(path, record)
     try:
         selected = parse_selection(record["response"], facts)
     except (KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError) as exc:
@@ -126,7 +158,7 @@ def select(company, facts, model, version="v3"):
     return selected, str(path.relative_to(ROOT)), record, None
 
 
-def run(companies, model=MODEL, offline=False, version="v3", merge=False):
+def run(companies, model=MODEL, offline=False, version="v3", merge=False, retry_invalid=False):
     from company_summaries import refined
 
     fact_builder = refined.build_facts if version == "v4" else build_facts
@@ -148,7 +180,7 @@ def run(companies, model=MODEL, offline=False, version="v3", merge=False):
             ranked = refined.rank_optional(company, facts) if version == "v4" else [f.id for f in facts if not f.required][:2]
             selected, cache, record, error = ranked, None, {}, None
         else:
-            selected, cache, record, error = select(company, facts, model, version)
+            selected, cache, record, error = select(company, facts, model, version, retry_invalid=retry_invalid)
         summary, used, question_sources = renderer(company, selected)
         row = {"registrationNumber": company["registrationNumber"], "summary": summary}
         rows = [r for r in rows if r["registrationNumber"] != row["registrationNumber"]]
@@ -186,6 +218,9 @@ def main():
     parser.add_argument("--model", default=MODEL)
     parser.add_argument("--version", choices=["v3", "v4"], default="v4")
     parser.add_argument("--offline", action="store_true", help="Run the rules-only comparison without an LLM")
+    parser.add_argument(
+        "--retry-invalid", action="store_true", help="Retry failed cached selections once; preserve every attempt"
+    )
     args = parser.parse_args()
     companies = load_companies()
     if args.company:
@@ -194,7 +229,7 @@ def main():
         if len(companies) != len(wanted):
             parser.error("Unknown company ID")
     try:
-        run(companies, args.model, args.offline, args.version, merge=bool(args.company))
+        run(companies, args.model, args.offline, args.version, merge=bool(args.company), retry_invalid=args.retry_invalid)
     except RuntimeError as exc:
         parser.exit(1, str(exc) + "\n")
 

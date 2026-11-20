@@ -66,6 +66,8 @@ uv run python -m company_summaries.pipeline --company SYN-000029
 
 That command refreshes one company's v4 summary and preserves the other saved companies. New responses are cached immediately; output files are published after the run succeeds. Do not run two generation processes at the same time.
 
+To recover from a cached invalid or truncated selection, add `--retry-invalid`. This permits one new attempt for that failed request while preserving the original response. Further ordinary runs reuse the recovered response. Valid caches never trigger an extra call just because this flag is present.
+
 `just up` is the original Docker-based alternative. `just serve` runs directly in the Python environment. Stop the direct server with Ctrl+C.
 
 ## Questions to be ready for
@@ -85,6 +87,8 @@ That command refreshes one company's v4 summary and preserves the other saved co
 `evaluations/REVIEW_PACKET.md` has 16 shuffled pairs. Eight compare v3 with v4; eight compare v4 with v4-rules. The separate `review-key.json` identifies the versions, so leave it closed while rating.
 
 Ask someone to check the supplied records, choose A/B/tie/neither, and enter their observations into `review-ratings.json`. Then run `just evaluate`. The report counts only actual entered preferences; the shipped ratings are blank. This is a small convenience review, not an independent validation study.
+
+The packet, version key and source records freeze as soon as any feedback or reviewer information is entered, including notes, clarity scores and timing before a preference is chosen. Subsequent generation may change the current summaries, but the saved review stays attached to its original text; `matches_current_outputs` reports that distinction.
 
 The 24 stress cases are generated synthetic perturbations, not new real companies. Their results show coverage of specific scenarios. They do not establish a general hallucination rate.
 

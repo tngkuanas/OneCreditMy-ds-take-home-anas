@@ -5,6 +5,7 @@ Status: **not yet reviewed by a person**.
 Open `review-source-records.json` to check each company. Do not open `review-key.json` until ratings are saved.
 For each pair, choose A, B, tie, or neither. Judge factual accuracy first, then important omissions, clarity, and usefulness for deciding what to investigate. Record errors and time spent in `review-ratings.json`.
 A tie is valid. If outputs are identical, mark a tie. Do not infer a supplier approval from a summary.
+The packet freezes as soon as any rating, note, timing, error, omission or reviewer information is entered.
 
 There are two comparisons: writing/coverage changes and model versus rules selection. Their assignments are hidden in the separate key. This is version blinding, not a claim of double-blind research.
 
