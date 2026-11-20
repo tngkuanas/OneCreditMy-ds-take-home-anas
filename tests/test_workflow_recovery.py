@@ -106,7 +106,7 @@ class RetryTests(unittest.TestCase):
     def test_cli_passes_retry_flag_and_partial_merge(self):
         with (
             patch("sys.argv", ["generate", "--company", self.company["registrationNumber"], "--retry-invalid"]),
-            patch.object(pipeline, "run") as run,
+            patch.object(pipeline, "run", return_value=([], [])) as run,
         ):
             pipeline.main()
         self.assertTrue(run.call_args.kwargs["retry_invalid"])

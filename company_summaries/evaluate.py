@@ -259,7 +259,7 @@ def evaluate(version):
             checks["evidence_present"] = bool(e) and e.get("summary") == text
             checks["selection_valid"] = bool(e) and e.get("selection_error") is None
             facts = e.get("facts", [])
-            checks.update(inspect_evidence(companies[cid], text, e))
+            checks.update(inspect_evidence(companies[cid], text, e, version))
             checks["evidence_sentences_present"] = bool(facts) and all(f["text"] in text for f in facts)
             try:
                 paths = [p for f in facts for p in f["sources"]] + e.get("follow_up_sources", [])

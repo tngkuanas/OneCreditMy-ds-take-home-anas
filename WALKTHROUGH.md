@@ -35,6 +35,8 @@ Use that explanation only once you can follow the code and verify the examples y
 
 `company_summaries/provenance.py` separately defines which source fields belong to each fact. Financial evidence cannot point at a company name or an unrelated financial year just because that path exists. Evaluation fingerprints cover source records too, so updating the data requires a fresh evaluation before green checks can appear.
 
+`company_summaries/models.py` is the shared source schema used by generation and the viewer. Invalid legal roles/statuses or duplicate IDs are rejected before summarisation. The final review record is in `REVIEW.md`.
+
 ## Follow one company through the code
 
 For `SYN-000029`:

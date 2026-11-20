@@ -3,6 +3,7 @@
 import copy
 import hashlib
 import json
+import math
 import random
 
 from company_summaries import refined
@@ -189,6 +190,26 @@ def has_review_input(document):
     )
 
 
+def validate_review(document):
+    for row in document.get("ratings", []):
+        preference = row.get("preference")
+        if preference is not None and preference not in {"A", "B", "tie", "neither"}:
+            raise ValueError("Preference must be A, B, tie, or neither")
+        for field in ("clarity_A_1_to_5", "clarity_B_1_to_5"):
+            value = row.get(field)
+            if value is not None and (type(value) is not int or not 1 <= value <= 5):
+                raise ValueError(f"{field} must be an integer from 1 to 5, or null")
+        seconds = row.get("seconds_spent")
+        if seconds is not None and (type(seconds) not in (int, float) or not math.isfinite(seconds) or seconds < 0):
+            raise ValueError("seconds_spent must be finite and non-negative, or null")
+        for field in ("factual_errors", "important_omissions"):
+            value = row.get(field, [])
+            if not isinstance(value, list) or any(not isinstance(item, str) for item in value):
+                raise ValueError(f"{field} must be a list of strings")
+        if not isinstance(row.get("notes", ""), str):
+            raise TypeError("Review notes must be a string")
+
+
 def review_packet():
     ratings_path = ROOT / "evaluations/review-ratings.json"
     if ratings_path.exists() and has_review_input(json.loads(ratings_path.read_text())):
@@ -261,6 +282,7 @@ def review_status():
     if not path.exists():
         return
     ratings = json.loads(path.read_text())
+    validate_review(ratings)
     key = {row["pair_id"]: row for row in json.loads((ROOT / "evaluations/review-key.json").read_text())}
     current = {}
     for version in {assignment[side] for assignment in key.values() for side in ("A", "B")}:

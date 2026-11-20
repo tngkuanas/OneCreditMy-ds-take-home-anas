@@ -7,6 +7,120 @@ source fields used by that particular fact, not merely exist in the record.
 import re
 
 
+def expected_text(company, fact, version):
+    """Source-derived wording contract; never invokes the producer's fact builder."""
+
+    def rm(value):
+        return ("-RM " if value < 0 else "RM ") + format(abs(value), ",.0f")
+
+    p = company["profile"]
+    text = {
+        "identity": f"{p['companyName']} is listed as {p['status'].lower()} in {p['state']}; "
+        f"its recorded business is {p['natureOfBusiness'].rstrip('.')}.",
+        "missing_financials": "No financial statements are supplied, "
+        "so profitability and repayment capacity cannot be assessed.",
+        "capital": f"Recorded share capital is {rm(p['shareCapital'])}; this is not a current cash balance.",
+        "persistent_fcf": "Free cash flow was negative in every supplied financial year.",
+    }
+    years = sorted(company["financials"]["years"], key=lambda y: y["financialYear"])
+    if years:
+        latest = years[-1]
+        s, fy = latest["statements"], latest["financialYear"]
+        if len(years) == 1:
+            text["performance"] = (
+                f"Only FY{fy} financials are supplied: revenue was {rm(s['revenue'])} "
+                f"and profit after tax was {rm(s['profitAfterTax'])}; no multi-year trend can be established."
+            )
+        else:
+            first = years[0]
+
+            def trend(key):
+                if version in {"v3", "rules-only"}:
+                    return "moved"
+                difference = s[key] - first["statements"][key]
+                return "rose" if difference > 0 else "fell" if difference < 0 else "was unchanged"
+
+            text["performance"] = (
+                f"Revenue {trend('revenue')} from {rm(first['statements']['revenue'])} (FY{first['financialYear']}) "
+                f"to {rm(s['revenue'])} (FY{fy}); profit after tax {trend('profitAfterTax')} from "
+                f"{rm(first['statements']['profitAfterTax'])} to {rm(s['profitAfterTax'])} over that period."
+            )
+            previous = years[-2]
+            change = s["profitAfterTax"] - previous["statements"]["profitAfterTax"]
+            direction = "rose" if change > 0 else "fell" if change < 0 else "was unchanged"
+            text["recent_profit"] = (
+                f"FY{fy} profit after tax {direction} versus FY{previous['financialYear']} "
+                f"({rm(previous['statements']['profitAfterTax'])})."
+            )
+        text.update(
+            {
+                "cash_flow": f"FY{fy} operating cash flow was {rm(s['operatingCashFlow'])}; "
+                f"free cash flow after capital expenditure was {rm(s['operatingCashFlow'] - s['capitalExpenditure'])}.",
+                "cash_debt": f"FY{fy} cash was {rm(s['cash'])} against borrowings of {rm(s['borrowings'])}.",
+                "negative_equity": f"FY{fy} equity was negative at {rm(s['totalEquity'])}.",
+                "working_capital": f"FY{fy} current liabilities exceeded current assets by "
+                f"{rm(s['currentLiabilities'] - s['currentAssets'])}.",
+            }
+        )
+        quick = latest["ratiosAndMetrics"]["liquidityAndCashFlow"]["quickRatio"]
+        if quick is not None:
+            text["quick_ratio"] = f"FY{fy} quick assets covered current liabilities {quick:.2f} times."
+        exceptions = [
+            f"FY{y['financialYear']}: {y['audit']['opinion'].lower()}" for y in years if y["audit"]["opinion"] != "Unqualified"
+        ]
+        if exceptions:
+            if latest["audit"]["opinion"] == "Unqualified":
+                exceptions.append(f"FY{fy}: unqualified")
+            text["audit"] = "Audit opinions include " + "; ".join(exceptions) + "."
+        else:
+            text["audit"] = f"FY{fy} audit opinion: unqualified."
+        for middle in years[1:-1]:
+            phrase = (
+                f"Between those endpoints, FY{middle['financialYear']} profit after tax was "
+                f"{rm(middle['statements']['profitAfterTax'])}."
+            )
+            if f"FY{middle['financialYear']} profit after tax was" in fact["text"]:
+                text["interim_profit"] = phrase
+    cases = company["litigation"]["cases"]
+    if not cases:
+        text["litigation"] = "No court cases appear in the supplied record."
+    else:
+        plaintiffs = sum(c["role"] == "plaintiff" for c in cases)
+        defendants = sum(c["role"] == "defendant" for c in cases)
+        legal = f"Recorded cases: {plaintiffs} as plaintiff and {defendants} as defendant."
+        pending = [c for c in cases if c["role"] == "defendant" and c["status"] == "Pending"]
+        judgments = sum(c["role"] == "defendant" and c["status"] == "Judgment entered" for c in cases)
+        petitions = sum(
+            c["role"] == "defendant" and c["status"] == "Pending" and c["caseType"] == "Winding-up petition" for c in cases
+        )
+        if pending:
+            legal += f" Pending defendant claims total {rm(sum(c['claimAmount'] for c in pending))}, not proven liabilities."
+        if judgments:
+            noun = "case(s) show" if version in {"v3", "rules-only"} else "case shows" if judgments == 1 else "cases show"
+            legal += f" {judgments} defendant {noun} judgment entered; the outcome is unspecified."
+        if petitions:
+            legal += f" Pending defendant winding-up petitions: {petitions}."
+        if not pending and not judgments:
+            legal += " None are recorded as pending defendant claims or defendant judgments."
+        text["litigation"] = legal
+    holders = company["relationships"]["shareholders"]
+    if holders:
+        owner = max(holders, key=lambda h: h["percentage"])
+        text["ownership"] = f"The largest direct shareholder, {owner['name']}, holds {owner['percentage']:g}%."
+        for holder in holders:
+            if holder["type"] == "company" and holder["percentage"] > 50:
+                country = holder.get("incorporatedIn") or "jurisdiction not supplied"
+                text["corporate_owner"] = (
+                    f"The majority direct shareholder is {holder['name']} ({holder['percentage']:g}%; {country})."
+                )
+    directors = company["relationships"]["directors"]
+    recent = sum("2025-01-01" <= d["appointedOn"] <= "2025-12-31" for d in directors)
+    text["recent_appointments"] = (
+        f"{recent} of {len(directors)} listed directors {'was' if recent == 1 else 'were'} appointed during 2025."
+    )
+    return text.get(fact["id"])
+
+
 def expected_paths(company, fact):
     key = fact["id"]
     paths = {
@@ -92,8 +206,10 @@ def expected_paths(company, fact):
 def follow_up_contract(company):
     years = company["financials"]["years"]
     cases = company["litigation"]["cases"]
-    if company["profile"]["status"] != "Active":
+    if company["profile"]["status"] == "Winding up":
         return "Verify winding-up status and the company's ability to fulfil new commitments.", ["profile.status"]
+    if company["profile"]["status"] != "Active":
+        return "Clarify the recorded company status and its ability to fulfil new commitments.", ["profile.status"]
     if not years:
         return "Request recent accounts and cash-flow information before assessing financial capacity.", ["financials.years"]
     if any(y["audit"]["opinion"] != "Unqualified" for y in years):
@@ -108,7 +224,7 @@ def follow_up_contract(company):
     return "Request updated accounts and confirm capacity for the proposed contract.", ["financials.years"]
 
 
-def inspect_evidence(company, summary, evidence):
+def inspect_evidence(company, summary, evidence, version="v4"):
     facts = evidence.get("facts", [])
     ids = [f.get("id") for f in facts]
     valid = bool(facts) and len(set(ids)) == len(ids)
@@ -133,6 +249,7 @@ def inspect_evidence(company, summary, evidence):
     remaining = remaining.replace("**Next check:**", "", 1).strip()
     fully_covered = " ".join(remaining.split()) == question
     return {
+        "evidence_values_match_source": bool(facts) and all(f["text"] == expected_text(company, f, version) for f in facts),
         "evidence_paths_match_facts": bool(valid),
         "follow_up_supported": question_valid,
         "summary_fully_traced": fully_covered,

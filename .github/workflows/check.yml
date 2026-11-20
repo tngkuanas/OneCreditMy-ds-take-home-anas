@@ -13,7 +13,12 @@ jobs:
       - run: uv run ruff format --check
       - run: uv run pyrefly check
       - run: uv run python -m unittest discover -s tests -v
+      - run: uv run python -m company_summaries.evaluate --version v1
+      - run: uv run python -m company_summaries.evaluate --version v2
       - run: uv run python -m company_summaries.evaluate --version v3 --require-complete
+      - run: uv run python -m company_summaries.evaluate --version rules-only --require-complete
       - run: uv run python -m company_summaries.evaluate --version v4 --require-complete
       - run: uv run python -m company_summaries.evaluate --version v4-rules --require-complete
       - run: uv run python -m company_summaries.experiments
+      - run: uv run python -m company_summaries.report
+      - run: git diff --exit-code -- summaries evaluations

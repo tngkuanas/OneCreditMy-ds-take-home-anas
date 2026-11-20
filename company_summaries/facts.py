@@ -172,8 +172,10 @@ def follow_up(company):
     """A question, never a decision or an invented explanation."""
     years = company["financials"]["years"]
     cases = company["litigation"]["cases"]
-    if company["profile"]["status"] != "Active":
+    if company["profile"]["status"] == "Winding up":
         return "Verify winding-up status and the company's ability to fulfil new commitments.", ["profile.status"]
+    if company["profile"]["status"] != "Active":
+        return "Clarify the recorded company status and its ability to fulfil new commitments.", ["profile.status"]
     if not years:
         return "Request recent accounts and cash-flow information before assessing financial capacity.", ["financials.years"]
     if any(y["audit"]["opinion"] != "Unqualified" for y in years):

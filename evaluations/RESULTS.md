@@ -27,7 +27,7 @@ v1 and v2 each cover only SYN-000029. Their automated checks are limited to iden
 ## Final acceptance checks
 
 - Coverage: 50/50; duplicate IDs: 0.
-- Applicable checks passed: 1536/1536.
+- Applicable checks passed: 1586/1586.
 - Source-read challenge cases passed: 12/12.
 - Summaries within the original 100-150 word target: 34/50.
 - Shorter summaries are allowed when extra detail adds little, especially for sparse records; there is no padding.
@@ -67,6 +67,9 @@ just evaluate
 - A single committed snapshot binds summary and evidence; exports must match it. The viewer rejects stale evaluation revisions and shows the previous snapshot after interrupted publication.
 - Reports fingerprint source records as well as outputs; source changes invalidate cached green checks.
 - Evidence paths must match each fact's source fields and financial years; path existence alone does not satisfy the provenance checks.
+- Every supported fact's quoted values are checked against the source-derived wording contract.
+- Source schema errors are rejected before generation; rejected selections give a nonzero CLI exit.
+- Malformed HTTP response bodies are retained for explicit retry; review scores and timings are validated.
 - Partial refreshes recover the complete committed collection even when exports are missing.
 - Failed cached selections can be retried explicitly with --retry-invalid; each response is retained, and successful retries are reused.
 - Review packets freeze on any entered feedback, including notes or scores before a preference.

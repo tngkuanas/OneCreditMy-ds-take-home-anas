@@ -8,6 +8,14 @@ import hashlib
 import json
 from pathlib import Path
 
+from pydantic import ValidationError
+
+from company_summaries.models import Company
+
+
+class SourceDataError(ValueError):
+    """A source file does not satisfy the supported company-record schema."""
+
 
 def summary_text(rows: list[dict]) -> str:
     return "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows)
@@ -45,7 +53,26 @@ def records_revision(records: list[dict]) -> str:
 
 
 def read_records(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    records = []
+    ids = set()
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+            company = Company.model_validate(record, strict=True)
+        except (ValueError, ValidationError) as exc:
+            raise SourceDataError(f"Invalid company record on line {number}: {exc}") from exc
+        if company.registration_number in ids:
+            raise SourceDataError(f"Duplicate company ID on line {number}: {company.registration_number}")
+        ids.add(company.registration_number)
+        years = [y.financial_year for y in company.financials.years]
+        if len(years) > 3 or len(set(years)) != len(years):
+            raise SourceDataError(f"Company {company.registration_number} must have up to three distinct financial years")
+        records.append(record)
+    if not records:
+        raise SourceDataError("No company records found")
+    return records
 
 
 def mirrors_match(root: Path, version: str) -> bool:

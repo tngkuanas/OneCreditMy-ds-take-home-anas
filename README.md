@@ -5,6 +5,7 @@
 ## Completed solution
 
 Start with [CASE_STUDY.md](CASE_STUDY.md) for the approach, experiments, results, and limitations.
+See [REVIEW.md](REVIEW.md) for the final review scope, fixes, verification and remaining limitations.
 The final output is [summaries/v4.jsonl](summaries/v4.jsonl); all 50 companies are included.
 
 ```bash
@@ -38,6 +39,13 @@ just evaluate
 The retry makes at most one new request per failed company. Failed responses remain intact;
 new responses are saved as numbered `.attempt-0002.json` files. A valid cached response is reused,
 including a successful retry, so the flag does not regenerate already valid selections.
+Malformed HTTP bodies are retained byte-for-byte in Base64 in the response record. Generation
+exits nonzero when a selection is rejected; run evaluation after recovery before submitting.
+
+Source files must use the supplied schema: unique `SYN-` IDs with six ASCII digits, at most
+three distinct financial years, finite numeric values, percentages between 0 and 100,
+and the five provided case statuses (`Pending`, `Settled`, `Dismissed`, `Withdrawn`,
+`Judgment entered`). Unsupported input is rejected rather than silently reclassified.
 
 No API key is needed for Ollama. Model downloads and new local inference are optional for reviewing the saved submission.
 The model selects optional facts; Python computes figures, preserves required concerns, and renders the summary.

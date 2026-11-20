@@ -179,6 +179,9 @@ def main():
             "- Reports fingerprint source records as well as outputs; source changes invalidate cached green checks.",
             "- Evidence paths must match each fact's source fields and financial years; "
             "path existence alone does not satisfy the provenance checks.",
+            "- Every supported fact's quoted values are checked against the source-derived wording contract.",
+            "- Source schema errors are rejected before generation; rejected selections give a nonzero CLI exit.",
+            "- Malformed HTTP response bodies are retained for explicit retry; review scores and timings are validated.",
             "- Partial refreshes recover the complete committed collection even when exports are missing.",
             "- Failed cached selections can be retried explicitly with --retry-invalid; "
             "each response is retained, and successful retries are reused.",

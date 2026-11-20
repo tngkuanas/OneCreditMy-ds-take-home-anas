@@ -1,6 +1,7 @@
 """Small local LLM selector with cached responses and a deterministic renderer."""
 
 import argparse
+import base64
 import hashlib
 import json
 import re
@@ -10,7 +11,7 @@ import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
 
-from company_summaries.artifacts import publish, read_snapshot
+from company_summaries.artifacts import SourceDataError, publish, read_records, read_snapshot
 from company_summaries.facts import build_facts, follow_up
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +33,7 @@ def write_json(path, data):
 
 
 def load_companies():
-    return [json.loads(line) for line in (ROOT / "data/companies.jsonl").read_text().splitlines() if line.strip()]
+    return read_records(ROOT / "data/companies.jsonl")
 
 
 def render(company, selected):
@@ -126,7 +127,7 @@ def select(company, facts, model, version="v3", retry_invalid=False):
             selected = parse_selection(record["response"], facts)
         except (KeyError, IndexError, TypeError, ValueError) as exc:
             if latest_failure is None:
-                latest_failure = ([], str(candidate.relative_to(ROOT)), record, str(exc))
+                latest_failure = ([], str(candidate.relative_to(ROOT)), record, record.get("response_error") or str(exc))
         else:
             return selected, str(candidate.relative_to(ROOT)), record, None
     if latest_failure is not None and not retry_invalid:
@@ -139,14 +140,21 @@ def select(company, facts, model, version="v3", retry_invalid=False):
     )
     try:
         with urllib.request.urlopen(request, timeout=600) as response:  # noqa: S310 -- fixed loopback endpoint
-            raw = json.load(response)
+            response_bytes = response.read()
     except (urllib.error.URLError, TimeoutError) as exc:
         raise RuntimeError("Ollama request failed; start Ollama and check the installed model.") from exc
+    try:
+        raw = json.loads(response_bytes)
+        response_error = None
+    except (UnicodeDecodeError, ValueError) as exc:
+        raw, response_error = None, f"Invalid JSON response: {exc}"
     record = {
         "created_at": datetime.now(UTC).isoformat(),
         "endpoint": ENDPOINT,
         "request": body,
         "response": raw,
+        "response_body_base64": base64.b64encode(response_bytes).decode("ascii"),
+        "response_error": response_error,
         "elapsed_seconds": round(time.monotonic() - start, 3),
     }
     write_json(path, record)
@@ -154,7 +162,7 @@ def select(company, facts, model, version="v3", retry_invalid=False):
         selected = parse_selection(record["response"], facts)
     except (KeyError, IndexError, TypeError, ValueError, json.JSONDecodeError) as exc:
         # Keep the mandatory summary, but expose the failed selection in the evidence.
-        return [], str(path.relative_to(ROOT)), record, str(exc)
+        return [], str(path.relative_to(ROOT)), record, record.get("response_error") or str(exc)
     return selected, str(path.relative_to(ROOT)), record, None
 
 
@@ -222,16 +230,23 @@ def main():
         "--retry-invalid", action="store_true", help="Retry failed cached selections once; preserve every attempt"
     )
     args = parser.parse_args()
-    companies = load_companies()
+    try:
+        companies = load_companies()
+    except SourceDataError as exc:
+        parser.exit(1, str(exc) + "\n")
     if args.company:
         wanted = set(args.company)
         companies = [c for c in companies if c["registrationNumber"] in wanted]
         if len(companies) != len(wanted):
             parser.error("Unknown company ID")
     try:
-        run(companies, args.model, args.offline, args.version, merge=bool(args.company), retry_invalid=args.retry_invalid)
+        _, evidence = run(
+            companies, args.model, args.offline, args.version, merge=bool(args.company), retry_invalid=args.retry_invalid
+        )
     except RuntimeError as exc:
         parser.exit(1, str(exc) + "\n")
+    if any(row.get("selection_error") for row in evidence):
+        parser.exit(1, "Generation contains rejected selections. Inspect evidence and use --retry-invalid to recover.\n")
 
 
 if __name__ == "__main__":
