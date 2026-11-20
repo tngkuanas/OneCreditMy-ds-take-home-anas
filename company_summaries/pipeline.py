@@ -66,21 +66,37 @@ def parse_selection(response, facts):
     return selected
 
 
-def select(company, facts, model):
-    prompt = (ROOT / "prompts/v3.txt").read_text()
+def selection_schema(facts):
+    valid = [f.id for f in facts if not f.required]
+    return {
+        "type": "object",
+        "properties": {
+            "selected": {
+                "type": "array",
+                "items": {"type": "string", **({"enum": valid} if valid else {})},
+                "maxItems": min(2, len(valid)),
+            }
+        },
+        "required": ["selected"],
+        "additionalProperties": False,
+    }
+
+
+def select(company, facts, model, version="v3"):
+    prompt = (ROOT / "prompts" / f"{version}.txt").read_text()
     body = {
         "model": model,
         "messages": [
             {"role": "system", "content": prompt},
             {"role": "user", "content": json.dumps({"facts": [f.to_dict() for f in facts]})},
         ],
-        "format": SCHEMA,
+        "format": selection_schema(facts) if version == "v4" else SCHEMA,
         "stream": False,
         "think": False,
         "options": {"temperature": 0, "seed": 42, "num_predict": 96, "num_ctx": 8192},
     }
     digest = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()
-    path = ROOT / "runs/v3" / f"{company['registrationNumber']}-{digest}.json"
+    path = ROOT / "runs" / version / f"{company['registrationNumber']}-{digest}.json"
     if path.exists():
         record = json.loads(path.read_text())
     else:
@@ -109,16 +125,29 @@ def select(company, facts, model):
     return selected, str(path.relative_to(ROOT)), record, None
 
 
-def run(companies, model=MODEL, offline=False):
+def run(companies, model=MODEL, offline=False, version="v3", merge=False):
+    from company_summaries import refined
+
+    fact_builder = refined.build_facts if version == "v4" else build_facts
+    renderer = refined.render if version == "v4" else render
+    output_version = ("v4-rules" if version == "v4" else "rules-only") if offline else version
+    out = ROOT / "summaries" / f"{output_version}.jsonl"
+    evidence_path = ROOT / "evaluations" / f"{output_version}-evidence.json"
     rows, evidence = [], []
+    if merge and out.exists() and evidence_path.exists():
+        rows = [json.loads(line) for line in out.read_text().splitlines() if line.strip()]
+        evidence = json.loads(evidence_path.read_text())
     for i, company in enumerate(companies, 1):
-        facts = build_facts(company)
+        facts = fact_builder(company)
         if offline:
-            selected, cache, record, error = [f.id for f in facts if not f.required][:2], None, {}, None
+            ranked = refined.rank_optional(company, facts) if version == "v4" else [f.id for f in facts if not f.required][:2]
+            selected, cache, record, error = ranked, None, {}, None
         else:
-            selected, cache, record, error = select(company, facts, model)
-        summary, used, question_sources = render(company, selected)
+            selected, cache, record, error = select(company, facts, model, version)
+        summary, used, question_sources = renderer(company, selected)
         row = {"registrationNumber": company["registrationNumber"], "summary": summary}
+        rows = [r for r in rows if r["registrationNumber"] != row["registrationNumber"]]
+        evidence = [r for r in evidence if r["registrationNumber"] != row["registrationNumber"]]
         rows.append(row)
         evidence.append(
             {
@@ -138,13 +167,15 @@ def run(companies, model=MODEL, offline=False):
             + (f"; selection rejected: {error}" if error else ""),
             flush=True,
         )
-        version = "rules-only" if offline else "v3"
-        # Checkpoint each successful company; interrupted runs resume from cached requests.
-        out = ROOT / "summaries" / f"{version}.jsonl"
-        temp = out.with_suffix(".tmp")
-        temp.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows))
-        temp.replace(out)
-        write_json(ROOT / "evaluations" / f"{version}-evidence.json", evidence)
+    # Publish only a finished run; an interruption leaves the previous outputs intact.
+    # Individual model responses are cached immediately, so retries still resume cheaply.
+    rows.sort(key=lambda r: r["registrationNumber"])
+    evidence.sort(key=lambda r: r["registrationNumber"])
+    out.parent.mkdir(parents=True, exist_ok=True)
+    temp = out.with_suffix(".tmp")
+    temp.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows))
+    temp.replace(out)
+    write_json(evidence_path, evidence)
     return rows, evidence
 
 
@@ -152,6 +183,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--company", action="append", help="Run specified IDs; default is all 50")
     parser.add_argument("--model", default=MODEL)
+    parser.add_argument("--version", choices=["v3", "v4"], default="v4")
     parser.add_argument("--offline", action="store_true", help="Run the rules-only comparison without an LLM")
     args = parser.parse_args()
     companies = load_companies()
@@ -161,7 +193,7 @@ def main():
         if len(companies) != len(wanted):
             parser.error("Unknown company ID")
     try:
-        run(companies, args.model, args.offline)
+        run(companies, args.model, args.offline, args.version, merge=bool(args.company))
     except RuntimeError as exc:
         parser.exit(1, str(exc) + "\n")
 

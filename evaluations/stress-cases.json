@@ -1,0 +1,5269 @@
+{
+  "seed": 20261120,
+  "cases": [
+    {
+      "scenario": "missing",
+      "company": {
+        "registrationNumber": "TEST-000001",
+        "profile": {
+          "companyName": "Synthetic Stress 1 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": []
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "missing_accounts": "No financial statements are supplied"
+      }
+    },
+    {
+      "scenario": "missing",
+      "company": {
+        "registrationNumber": "TEST-000002",
+        "profile": {
+          "companyName": "Synthetic Stress 2 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": []
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "missing_accounts": "No financial statements are supplied"
+      }
+    },
+    {
+      "scenario": "missing",
+      "company": {
+        "registrationNumber": "TEST-000003",
+        "profile": {
+          "companyName": "Synthetic Stress 3 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": []
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "missing_accounts": "No financial statements are supplied"
+      }
+    },
+    {
+      "scenario": "single",
+      "company": {
+        "registrationNumber": "TEST-000004",
+        "profile": {
+          "companyName": "Synthetic Stress 4 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 386803,
+                "costOfSales": 193401,
+                "grossProfit": 193402,
+                "operatingExpenses": 187454,
+                "operatingProfit": 5948,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4448,
+                "taxExpense": 0,
+                "profitAfterTax": 4448,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "no_invented_trend": "no multi-year trend can be established"
+      }
+    },
+    {
+      "scenario": "single",
+      "company": {
+        "registrationNumber": "TEST-000005",
+        "profile": {
+          "companyName": "Synthetic Stress 5 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 281367,
+                "costOfSales": 140683,
+                "grossProfit": 140684,
+                "operatingExpenses": 132461,
+                "operatingProfit": 8223,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 6723,
+                "taxExpense": 0,
+                "profitAfterTax": 6723,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "no_invented_trend": "no multi-year trend can be established"
+      }
+    },
+    {
+      "scenario": "single",
+      "company": {
+        "registrationNumber": "TEST-000006",
+        "profile": {
+          "companyName": "Synthetic Stress 6 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 292439,
+                "costOfSales": 146219,
+                "grossProfit": 146220,
+                "operatingExpenses": 139701,
+                "operatingProfit": 6519,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 5019,
+                "taxExpense": 0,
+                "profitAfterTax": 5019,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "no_invented_trend": "no multi-year trend can be established"
+      }
+    },
+    {
+      "scenario": "interim_loss",
+      "company": {
+        "registrationNumber": "TEST-000007",
+        "profile": {
+          "companyName": "Synthetic Stress 7 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 108130,
+                "costOfSales": 54065,
+                "grossProfit": 54065,
+                "operatingExpenses": 44208,
+                "operatingProfit": 9857,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 8357,
+                "taxExpense": 0,
+                "profitAfterTax": 8357,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 387228,
+                "costOfSales": 193614,
+                "grossProfit": 193614,
+                "operatingExpenses": 200662,
+                "operatingProfit": -7048,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": -8548,
+                "taxExpense": 0,
+                "profitAfterTax": -8548,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 226286,
+                "costOfSales": 113143,
+                "grossProfit": 113143,
+                "operatingExpenses": 106751,
+                "operatingProfit": 6392,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4892,
+                "taxExpense": 0,
+                "profitAfterTax": 4892,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "interim_loss": "FY2023 profit after tax was -RM 8,548"
+      }
+    },
+    {
+      "scenario": "interim_loss",
+      "company": {
+        "registrationNumber": "TEST-000008",
+        "profile": {
+          "companyName": "Synthetic Stress 8 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 327016,
+                "costOfSales": 163508,
+                "grossProfit": 163508,
+                "operatingExpenses": 155952,
+                "operatingProfit": 7556,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 6056,
+                "taxExpense": 0,
+                "profitAfterTax": 6056,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 128524,
+                "costOfSales": 64262,
+                "grossProfit": 64262,
+                "operatingExpenses": 65205,
+                "operatingProfit": -943,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": -2443,
+                "taxExpense": 0,
+                "profitAfterTax": -2443,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 321004,
+                "costOfSales": 160502,
+                "grossProfit": 160502,
+                "operatingExpenses": 153994,
+                "operatingProfit": 6508,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 5008,
+                "taxExpense": 0,
+                "profitAfterTax": 5008,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "interim_loss": "FY2023 profit after tax was -RM 2,443"
+      }
+    },
+    {
+      "scenario": "interim_loss",
+      "company": {
+        "registrationNumber": "TEST-000009",
+        "profile": {
+          "companyName": "Synthetic Stress 9 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 372607,
+                "costOfSales": 186303,
+                "grossProfit": 186304,
+                "operatingExpenses": 178511,
+                "operatingProfit": 7793,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 6293,
+                "taxExpense": 0,
+                "profitAfterTax": 6293,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 265504,
+                "costOfSales": 132752,
+                "grossProfit": 132752,
+                "operatingExpenses": 147938,
+                "operatingProfit": -15186,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": -16686,
+                "taxExpense": 0,
+                "profitAfterTax": -16686,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 351433,
+                "costOfSales": 175716,
+                "grossProfit": 175717,
+                "operatingExpenses": 168457,
+                "operatingProfit": 7260,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 5760,
+                "taxExpense": 0,
+                "profitAfterTax": 5760,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "interim_loss": "FY2023 profit after tax was -RM 16,686"
+      }
+    },
+    {
+      "scenario": "plaintiff",
+      "company": {
+        "registrationNumber": "TEST-000010",
+        "profile": {
+          "companyName": "Synthetic Stress 10 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 300752,
+                "costOfSales": 150376,
+                "grossProfit": 150376,
+                "operatingExpenses": 144642,
+                "operatingProfit": 5734,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4234,
+                "taxExpense": 0,
+                "profitAfterTax": 4234,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 311042,
+                "costOfSales": 155521,
+                "grossProfit": 155521,
+                "operatingExpenses": 146789,
+                "operatingProfit": 8732,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 7232,
+                "taxExpense": 0,
+                "profitAfterTax": 7232,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 294259,
+                "costOfSales": 147129,
+                "grossProfit": 147130,
+                "operatingExpenses": 143602,
+                "operatingProfit": 3528,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 2028,
+                "taxExpense": 0,
+                "profitAfterTax": 2028,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": [
+            {
+              "caseNumber": "TEST-CASE-0",
+              "role": "plaintiff",
+              "caseType": "Debt recovery",
+              "court": "Synthetic Court",
+              "filedOn": "2025-01-01",
+              "status": "Pending",
+              "claimAmount": 85478
+            }
+          ]
+        }
+      },
+      "expected": {
+        "plaintiff_role": "1 as plaintiff and 0 as defendant"
+      }
+    },
+    {
+      "scenario": "plaintiff",
+      "company": {
+        "registrationNumber": "TEST-000011",
+        "profile": {
+          "companyName": "Synthetic Stress 11 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 340789,
+                "costOfSales": 170394,
+                "grossProfit": 170395,
+                "operatingExpenses": 166576,
+                "operatingProfit": 3819,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 2319,
+                "taxExpense": 0,
+                "profitAfterTax": 2319,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 370758,
+                "costOfSales": 185379,
+                "grossProfit": 185379,
+                "operatingExpenses": 179362,
+                "operatingProfit": 6017,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4517,
+                "taxExpense": 0,
+                "profitAfterTax": 4517,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 155584,
+                "costOfSales": 77792,
+                "grossProfit": 77792,
+                "operatingExpenses": 72625,
+                "operatingProfit": 5167,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 3667,
+                "taxExpense": 0,
+                "profitAfterTax": 3667,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": [
+            {
+              "caseNumber": "TEST-CASE-1",
+              "role": "plaintiff",
+              "caseType": "Debt recovery",
+              "court": "Synthetic Court",
+              "filedOn": "2025-01-01",
+              "status": "Pending",
+              "claimAmount": 85919
+            }
+          ]
+        }
+      },
+      "expected": {
+        "plaintiff_role": "1 as plaintiff and 0 as defendant"
+      }
+    },
+    {
+      "scenario": "plaintiff",
+      "company": {
+        "registrationNumber": "TEST-000012",
+        "profile": {
+          "companyName": "Synthetic Stress 12 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 189369,
+                "costOfSales": 94684,
+                "grossProfit": 94685,
+                "operatingExpenses": 85027,
+                "operatingProfit": 9658,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 8158,
+                "taxExpense": 0,
+                "profitAfterTax": 8158,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 132923,
+                "costOfSales": 66461,
+                "grossProfit": 66462,
+                "operatingExpenses": 61698,
+                "operatingProfit": 4764,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 3264,
+                "taxExpense": 0,
+                "profitAfterTax": 3264,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 272510,
+                "costOfSales": 136255,
+                "grossProfit": 136255,
+                "operatingExpenses": 130439,
+                "operatingProfit": 5816,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4316,
+                "taxExpense": 0,
+                "profitAfterTax": 4316,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": [
+            {
+              "caseNumber": "TEST-CASE-2",
+              "role": "plaintiff",
+              "caseType": "Debt recovery",
+              "court": "Synthetic Court",
+              "filedOn": "2025-01-01",
+              "status": "Pending",
+              "claimAmount": 54140
+            }
+          ]
+        }
+      },
+      "expected": {
+        "plaintiff_role": "1 as plaintiff and 0 as defendant"
+      }
+    },
+    {
+      "scenario": "defendant",
+      "company": {
+        "registrationNumber": "TEST-000013",
+        "profile": {
+          "companyName": "Synthetic Stress 13 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 324294,
+                "costOfSales": 162147,
+                "grossProfit": 162147,
+                "operatingExpenses": 157583,
+                "operatingProfit": 4564,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 3064,
+                "taxExpense": 0,
+                "profitAfterTax": 3064,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 112383,
+                "costOfSales": 56191,
+                "grossProfit": 56192,
+                "operatingExpenses": 52313,
+                "operatingProfit": 3879,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 2379,
+                "taxExpense": 0,
+                "profitAfterTax": 2379,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 362090,
+                "costOfSales": 181045,
+                "grossProfit": 181045,
+                "operatingExpenses": 175427,
+                "operatingProfit": 5618,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4118,
+                "taxExpense": 0,
+                "profitAfterTax": 4118,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": [
+            {
+              "caseNumber": "TEST-CASE-0",
+              "role": "defendant",
+              "caseType": "Debt recovery",
+              "court": "Synthetic Court",
+              "filedOn": "2025-01-01",
+              "status": "Pending",
+              "claimAmount": 12345
+            }
+          ]
+        }
+      },
+      "expected": {
+        "unproven_claim": "RM 12,345, not proven liabilities"
+      }
+    },
+    {
+      "scenario": "defendant",
+      "company": {
+        "registrationNumber": "TEST-000014",
+        "profile": {
+          "companyName": "Synthetic Stress 14 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 244783,
+                "costOfSales": 122391,
+                "grossProfit": 122392,
+                "operatingExpenses": 113199,
+                "operatingProfit": 9193,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 7693,
+                "taxExpense": 0,
+                "profitAfterTax": 7693,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 138886,
+                "costOfSales": 69443,
+                "grossProfit": 69443,
+                "operatingExpenses": 64510,
+                "operatingProfit": 4933,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 3433,
+                "taxExpense": 0,
+                "profitAfterTax": 3433,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 107128,
+                "costOfSales": 53564,
+                "grossProfit": 53564,
+                "operatingExpenses": 42506,
+                "operatingProfit": 11058,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9558,
+                "taxExpense": 0,
+                "profitAfterTax": 9558,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": [
+            {
+              "caseNumber": "TEST-CASE-1",
+              "role": "defendant",
+              "caseType": "Debt recovery",
+              "court": "Synthetic Court",
+              "filedOn": "2025-01-01",
+              "status": "Pending",
+              "claimAmount": 20249
+            }
+          ]
+        }
+      },
+      "expected": {
+        "unproven_claim": "RM 20,249, not proven liabilities"
+      }
+    },
+    {
+      "scenario": "defendant",
+      "company": {
+        "registrationNumber": "TEST-000015",
+        "profile": {
+          "companyName": "Synthetic Stress 15 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 130775,
+                "costOfSales": 65387,
+                "grossProfit": 65388,
+                "operatingExpenses": 54430,
+                "operatingProfit": 10958,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9458,
+                "taxExpense": 0,
+                "profitAfterTax": 9458,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 244154,
+                "costOfSales": 122077,
+                "grossProfit": 122077,
+                "operatingExpenses": 115498,
+                "operatingProfit": 6579,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 5079,
+                "taxExpense": 0,
+                "profitAfterTax": 5079,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 226708,
+                "costOfSales": 113354,
+                "grossProfit": 113354,
+                "operatingExpenses": 103786,
+                "operatingProfit": 9568,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 8068,
+                "taxExpense": 0,
+                "profitAfterTax": 8068,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": [
+            {
+              "caseNumber": "TEST-CASE-2",
+              "role": "defendant",
+              "caseType": "Debt recovery",
+              "court": "Synthetic Court",
+              "filedOn": "2025-01-01",
+              "status": "Pending",
+              "claimAmount": 50820
+            }
+          ]
+        }
+      },
+      "expected": {
+        "unproven_claim": "RM 50,820, not proven liabilities"
+      }
+    },
+    {
+      "scenario": "corporate",
+      "company": {
+        "registrationNumber": "TEST-000016",
+        "profile": {
+          "companyName": "Synthetic Stress 16 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Synthetic Parent",
+              "type": "company",
+              "percentage": 100,
+              "registrationNumber": "TEST-PARENT",
+              "incorporatedIn": "Singapore"
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 127836,
+                "costOfSales": 63918,
+                "grossProfit": 63918,
+                "operatingExpenses": 57499,
+                "operatingProfit": 6419,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4919,
+                "taxExpense": 0,
+                "profitAfterTax": 4919,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 389152,
+                "costOfSales": 194576,
+                "grossProfit": 194576,
+                "operatingExpenses": 190649,
+                "operatingProfit": 3927,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 2427,
+                "taxExpense": 0,
+                "profitAfterTax": 2427,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 170997,
+                "costOfSales": 85498,
+                "grossProfit": 85499,
+                "operatingExpenses": 74557,
+                "operatingProfit": 10942,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9442,
+                "taxExpense": 0,
+                "profitAfterTax": 9442,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "corporate_context": "Synthetic Parent (100%; Singapore)"
+      }
+    },
+    {
+      "scenario": "corporate",
+      "company": {
+        "registrationNumber": "TEST-000017",
+        "profile": {
+          "companyName": "Synthetic Stress 17 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Synthetic Parent",
+              "type": "company",
+              "percentage": 100,
+              "registrationNumber": "TEST-PARENT",
+              "incorporatedIn": "Singapore"
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 163286,
+                "costOfSales": 81643,
+                "grossProfit": 81643,
+                "operatingExpenses": 70530,
+                "operatingProfit": 11113,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9613,
+                "taxExpense": 0,
+                "profitAfterTax": 9613,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 116663,
+                "costOfSales": 58331,
+                "grossProfit": 58332,
+                "operatingExpenses": 51855,
+                "operatingProfit": 6477,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4977,
+                "taxExpense": 0,
+                "profitAfterTax": 4977,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 104372,
+                "costOfSales": 52186,
+                "grossProfit": 52186,
+                "operatingExpenses": 46902,
+                "operatingProfit": 5284,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 3784,
+                "taxExpense": 0,
+                "profitAfterTax": 3784,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "corporate_context": "Synthetic Parent (100%; Singapore)"
+      }
+    },
+    {
+      "scenario": "corporate",
+      "company": {
+        "registrationNumber": "TEST-000018",
+        "profile": {
+          "companyName": "Synthetic Stress 18 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Synthetic Parent",
+              "type": "company",
+              "percentage": 100,
+              "registrationNumber": "TEST-PARENT",
+              "incorporatedIn": "Singapore"
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 187076,
+                "costOfSales": 93538,
+                "grossProfit": 93538,
+                "operatingExpenses": 85586,
+                "operatingProfit": 7952,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 6452,
+                "taxExpense": 0,
+                "profitAfterTax": 6452,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 106710,
+                "costOfSales": 53355,
+                "grossProfit": 53355,
+                "operatingExpenses": 45927,
+                "operatingProfit": 7428,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 5928,
+                "taxExpense": 0,
+                "profitAfterTax": 5928,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 383410,
+                "costOfSales": 191705,
+                "grossProfit": 191705,
+                "operatingExpenses": 182010,
+                "operatingProfit": 9695,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 8195,
+                "taxExpense": 0,
+                "profitAfterTax": 8195,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "corporate_context": "Synthetic Parent (100%; Singapore)"
+      }
+    },
+    {
+      "scenario": "appointments",
+      "company": {
+        "registrationNumber": "TEST-000019",
+        "profile": {
+          "companyName": "Synthetic Stress 19 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2025-12-31"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2026-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 301705,
+                "costOfSales": 150852,
+                "grossProfit": 150853,
+                "operatingExpenses": 141948,
+                "operatingProfit": 8905,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 7405,
+                "taxExpense": 0,
+                "profitAfterTax": 7405,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 256998,
+                "costOfSales": 128499,
+                "grossProfit": 128499,
+                "operatingExpenses": 117389,
+                "operatingProfit": 11110,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9610,
+                "taxExpense": 0,
+                "profitAfterTax": 9610,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 379985,
+                "costOfSales": 189992,
+                "grossProfit": 189993,
+                "operatingExpenses": 178847,
+                "operatingProfit": 11146,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9646,
+                "taxExpense": 0,
+                "profitAfterTax": 9646,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "date_boundary": "1 of 2 listed directors was appointed during 2025"
+      }
+    },
+    {
+      "scenario": "appointments",
+      "company": {
+        "registrationNumber": "TEST-000020",
+        "profile": {
+          "companyName": "Synthetic Stress 20 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2025-12-31"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2026-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 364100,
+                "costOfSales": 182050,
+                "grossProfit": 182050,
+                "operatingExpenses": 175204,
+                "operatingProfit": 6846,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 5346,
+                "taxExpense": 0,
+                "profitAfterTax": 5346,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 393062,
+                "costOfSales": 196531,
+                "grossProfit": 196531,
+                "operatingExpenses": 185117,
+                "operatingProfit": 11414,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9914,
+                "taxExpense": 0,
+                "profitAfterTax": 9914,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 270769,
+                "costOfSales": 135384,
+                "grossProfit": 135385,
+                "operatingExpenses": 129249,
+                "operatingProfit": 6136,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 4636,
+                "taxExpense": 0,
+                "profitAfterTax": 4636,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "date_boundary": "1 of 2 listed directors was appointed during 2025"
+      }
+    },
+    {
+      "scenario": "appointments",
+      "company": {
+        "registrationNumber": "TEST-000021",
+        "profile": {
+          "companyName": "Synthetic Stress 21 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2025-12-31"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2026-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 342755,
+                "costOfSales": 171377,
+                "grossProfit": 171378,
+                "operatingExpenses": 167571,
+                "operatingProfit": 3807,
+                "depreciation": 153701,
+                "interestExpense": 1500,
+                "profitBeforeTax": 2307,
+                "taxExpense": 0,
+                "profitAfterTax": 2307,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 154654,
+                "costOfSales": 77327,
+                "grossProfit": 77327,
+                "operatingExpenses": 66727,
+                "operatingProfit": 10600,
+                "depreciation": 156687,
+                "interestExpense": 1500,
+                "profitBeforeTax": 9100,
+                "taxExpense": 0,
+                "profitAfterTax": 9100,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 382639,
+                "costOfSales": 191319,
+                "grossProfit": 191320,
+                "operatingExpenses": 186998,
+                "operatingProfit": 4322,
+                "depreciation": 160374,
+                "interestExpense": 1500,
+                "profitBeforeTax": 2822,
+                "taxExpense": 0,
+                "profitAfterTax": 2822,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "date_boundary": "1 of 2 listed directors was appointed during 2025"
+      }
+    },
+    {
+      "scenario": "zero",
+      "company": {
+        "registrationNumber": "TEST-000022",
+        "profile": {
+          "companyName": "Synthetic Stress 22 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 153701,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 156687,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 160374,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "zero_revenue": "Revenue was unchanged from RM 0"
+      }
+    },
+    {
+      "scenario": "zero",
+      "company": {
+        "registrationNumber": "TEST-000023",
+        "profile": {
+          "companyName": "Synthetic Stress 23 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 153701,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 156687,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 160374,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "zero_revenue": "Revenue was unchanged from RM 0"
+      }
+    },
+    {
+      "scenario": "zero",
+      "company": {
+        "registrationNumber": "TEST-000024",
+        "profile": {
+          "companyName": "Synthetic Stress 24 Sdn. Bhd.",
+          "status": "Active",
+          "companyType": "Private limited company",
+          "incorporationDate": "2018-06-15",
+          "industry": "Retail",
+          "state": "Selangor",
+          "natureOfBusiness": "Software maintenance",
+          "shareCapital": 50000,
+          "formerNames": []
+        },
+        "relationships": {
+          "directors": [
+            {
+              "name": "Director 1",
+              "designation": "Director",
+              "appointedOn": "2020-01-01"
+            },
+            {
+              "name": "Director 2",
+              "designation": "Director",
+              "appointedOn": "2021-01-01"
+            }
+          ],
+          "shareholders": [
+            {
+              "name": "Director 1",
+              "type": "individual",
+              "percentage": 100
+            }
+          ]
+        },
+        "financials": {
+          "years": [
+            {
+              "financialYear": 2022,
+              "financialYearEnd": "2022-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 153701,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 513945,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 206295
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2023,
+              "financialYearEnd": "2023-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 156687,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 480387,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 287155
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            },
+            {
+              "financialYear": 2024,
+              "financialYearEnd": "2024-06-30",
+              "audit": {
+                "firm": "Audit Firm 8",
+                "opinion": "Unqualified"
+              },
+              "statements": {
+                "revenue": 0,
+                "costOfSales": 0,
+                "grossProfit": 0,
+                "operatingExpenses": 1500,
+                "operatingProfit": -1500,
+                "depreciation": 160374,
+                "interestExpense": 0,
+                "profitBeforeTax": -1500,
+                "taxExpense": 0,
+                "profitAfterTax": -1500,
+                "cash": 50000,
+                "tradeReceivables": 130000,
+                "inventory": 20000,
+                "currentAssets": 200000,
+                "nonCurrentAssets": 300000,
+                "totalAssets": 500000,
+                "tradePayables": 515615,
+                "borrowings": 200000,
+                "currentLiabilities": 100000,
+                "totalLiabilities": 300000,
+                "totalEquity": 200000,
+                "operatingCashFlow": 12000,
+                "capitalExpenditure": 7000,
+                "borrowingsRepaid": 261283
+              },
+              "ratiosAndMetrics": {
+                "profitability": {
+                  "grossProfitMargin": null,
+                  "operatingProfitMargin": null,
+                  "ebitda": null,
+                  "ebitdaMargin": null,
+                  "operatingExpenseRatio": null,
+                  "netProfitMargin": null,
+                  "taxEfficiencyRatio": null
+                },
+                "liquidityAndCashFlow": {
+                  "quickRatio": null,
+                  "cashRatio": null,
+                  "cashToRevenueRatio": null,
+                  "operatingCashFlow": null,
+                  "operatingCashFlowMargin": null,
+                  "freeCashFlow": null,
+                  "accrualRatio": null
+                },
+                "operationalEfficiency": {
+                  "cashConversionCycle": null,
+                  "daysSalesOutstanding": null,
+                  "daysInventoryOutstanding": null,
+                  "daysPayablesOutstanding": null,
+                  "inventoryTurnover": null,
+                  "receivablesTurnover": null,
+                  "assetTurnoverRatio": null,
+                  "netWorkingCapital": null
+                },
+                "capitalStructure": {
+                  "leverageRatio": null,
+                  "interestCoverageRatio": null,
+                  "fixedAssetComposition": null,
+                  "depreciationToAssetRatio": null,
+                  "debtServiceCoverageRatio": null
+                }
+              }
+            }
+          ]
+        },
+        "litigation": {
+          "cases": []
+        }
+      },
+      "expected": {
+        "zero_revenue": "Revenue was unchanged from RM 0"
+      }
+    }
+  ],
+  "limits": "New synthetic perturbations of a supplied schema, not independently sourced or held-out real companies. These become regression cases once inspected; no external generalisation estimate is claimed.",
+  "renderer_sha256": "5e0d1721c8f2131ac4668abf7ba8503db5f38e7ab3c27610b779c9be8a4f62d2"
+}

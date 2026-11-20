@@ -1,0 +1,130 @@
+[
+  {
+    "pair_id": "PAIR-01",
+    "company": "SYN-000302",
+    "A": "v3",
+    "B": "v4",
+    "A_sha256": "d2cb670f03f63e2eac15abefd29a3e92a8e0cadd46f5f23627c11ccdeffb2ef5",
+    "B_sha256": "775b587133444b3774f7d62e50941fae776bcb6a1d443ba03eebe6dc6d40f4bf"
+  },
+  {
+    "pair_id": "PAIR-02",
+    "company": "SYN-000545",
+    "A": "v4",
+    "B": "v3",
+    "A_sha256": "7aeba1232ed37050e823f4070390137a4d93a00fcc28d3a87bd01d595aeaca31",
+    "B_sha256": "c39be5d719d100e58d641a7800fac9d3c92b7a62e37c80eb6be99bae3b9819a7"
+  },
+  {
+    "pair_id": "PAIR-03",
+    "company": "SYN-001829",
+    "A": "v4",
+    "B": "v3",
+    "A_sha256": "2450cf6220170d2489aa549c51fb009f0da6187b5dea5c3fd196a70d750348a1",
+    "B_sha256": "bfa4efd56524f6a0ffdccc278ac238ed526646faedb3895295c84a33efce871a"
+  },
+  {
+    "pair_id": "PAIR-04",
+    "company": "SYN-000451",
+    "A": "v4-rules",
+    "B": "v4",
+    "A_sha256": "797c7e4a65630132ef21b9ac504a63ea2fafbceca8722003bc60d69c8f0e60e4",
+    "B_sha256": "cc8c6c64ed1f9d60e274bf07a67bac793297e74369afec0e827d4e69be9f7201"
+  },
+  {
+    "pair_id": "PAIR-05",
+    "company": "SYN-000217",
+    "A": "v4-rules",
+    "B": "v4",
+    "A_sha256": "ee784c87109705f71bd6eab2c873a9661af725ee5efdbc0dd3fc0d3645be4ad4",
+    "B_sha256": "c2feb30cbb9ec26386215a2f52bfcc398f791e6defdecd8822b5000ac5057480"
+  },
+  {
+    "pair_id": "PAIR-06",
+    "company": "SYN-000302",
+    "A": "v4-rules",
+    "B": "v4",
+    "A_sha256": "a7ee1ea3ac400540a6a41de831a5f743d55f209bfeb83834aac6ee85440e3439",
+    "B_sha256": "775b587133444b3774f7d62e50941fae776bcb6a1d443ba03eebe6dc6d40f4bf"
+  },
+  {
+    "pair_id": "PAIR-07",
+    "company": "SYN-000029",
+    "A": "v4",
+    "B": "v3",
+    "A_sha256": "75e9dee847c315c71c19b1de4bbdec5b9ba76539ea2757d145fe8e4439838527",
+    "B_sha256": "b68de9fccd5290399eeccece27bff594709c7443611679fe9fb63c4b67fa25e0"
+  },
+  {
+    "pair_id": "PAIR-08",
+    "company": "SYN-000029",
+    "A": "v4",
+    "B": "v4-rules",
+    "A_sha256": "75e9dee847c315c71c19b1de4bbdec5b9ba76539ea2757d145fe8e4439838527",
+    "B_sha256": "49aac478d1a7ed3f007f80a45f670ce311a002e1be460100d446b7b2a35dc02d"
+  },
+  {
+    "pair_id": "PAIR-09",
+    "company": "SYN-000545",
+    "A": "v4-rules",
+    "B": "v4",
+    "A_sha256": "00a790167c935f83571595fa8a2d1dc44bf34496ff539f65667f445bcd728a4d",
+    "B_sha256": "7aeba1232ed37050e823f4070390137a4d93a00fcc28d3a87bd01d595aeaca31"
+  },
+  {
+    "pair_id": "PAIR-10",
+    "company": "SYN-000451",
+    "A": "v4",
+    "B": "v3",
+    "A_sha256": "cc8c6c64ed1f9d60e274bf07a67bac793297e74369afec0e827d4e69be9f7201",
+    "B_sha256": "eaa3ed45246122bba25ccad2c2310cdce6188d17ec8389ae278edfaaf9ad550b"
+  },
+  {
+    "pair_id": "PAIR-11",
+    "company": "SYN-000217",
+    "A": "v3",
+    "B": "v4",
+    "A_sha256": "ee7f6b111fe6372a75095997b4d25f243a9e207e971392197dc383eaf26688de",
+    "B_sha256": "c2feb30cbb9ec26386215a2f52bfcc398f791e6defdecd8822b5000ac5057480"
+  },
+  {
+    "pair_id": "PAIR-12",
+    "company": "SYN-001829",
+    "A": "v4",
+    "B": "v4-rules",
+    "A_sha256": "2450cf6220170d2489aa549c51fb009f0da6187b5dea5c3fd196a70d750348a1",
+    "B_sha256": "e363fef427bf3f1b85ef962824c738c060ed409c762f874dbed7ea5e4824e372"
+  },
+  {
+    "pair_id": "PAIR-13",
+    "company": "SYN-000286",
+    "A": "v4-rules",
+    "B": "v4",
+    "A_sha256": "49efd8dd20ae5ebc5cdb1e5831226555242ac693c679fba3c75062623d49375d",
+    "B_sha256": "89a939dc4b0ee0e3f3f2311571e2fc97866964a0442ebf4d9b8b0645a7346093"
+  },
+  {
+    "pair_id": "PAIR-14",
+    "company": "SYN-000286",
+    "A": "v3",
+    "B": "v4",
+    "A_sha256": "46ac062eca74196ca5581d16ccb246f25dd87fdd1379f64ef4ccfaeeb031cd8b",
+    "B_sha256": "89a939dc4b0ee0e3f3f2311571e2fc97866964a0442ebf4d9b8b0645a7346093"
+  },
+  {
+    "pair_id": "PAIR-15",
+    "company": "SYN-001203",
+    "A": "v4",
+    "B": "v3",
+    "A_sha256": "8c72933c9f2b8ec78e7ba0133b43f464a91068168962e929da38cf515f261c69",
+    "B_sha256": "d8ae0d52684e6a9d28cc3714a503f4de5e0ddc1e710867bfbddeadf767001d7c"
+  },
+  {
+    "pair_id": "PAIR-16",
+    "company": "SYN-001203",
+    "A": "v4",
+    "B": "v4-rules",
+    "A_sha256": "8c72933c9f2b8ec78e7ba0133b43f464a91068168962e929da38cf515f261c69",
+    "B_sha256": "8c72933c9f2b8ec78e7ba0133b43f464a91068168962e929da38cf515f261c69"
+  }
+]

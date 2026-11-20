@@ -1,0 +1,166 @@
+{
+  "status": "pending_human_review",
+  "reviewer": null,
+  "ratings": [
+    {
+      "pair_id": "PAIR-01",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-02",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-03",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-04",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-05",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-06",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-07",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-08",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-09",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-10",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-11",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-12",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-13",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-14",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-15",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    },
+    {
+      "pair_id": "PAIR-16",
+      "preference": null,
+      "clarity_A_1_to_5": null,
+      "clarity_B_1_to_5": null,
+      "seconds_spent": null,
+      "factual_errors": [],
+      "important_omissions": [],
+      "notes": ""
+    }
+  ]
+}

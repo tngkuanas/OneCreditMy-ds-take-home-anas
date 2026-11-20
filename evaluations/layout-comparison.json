@@ -1,0 +1,10 @@
+{
+  "v3": {
+    "median_paragraphs_per_summary": 2.0,
+    "median_words_per_paragraph": 31.0
+  },
+  "v4": {
+    "median_paragraphs_per_summary": 4.0,
+    "median_words_per_paragraph": 21.0
+  }
+}

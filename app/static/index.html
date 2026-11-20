@@ -154,7 +154,7 @@ async function renderSummaries() {
     const text = company && data.summaries[company.registrationNumber];
     const warn = data.invalidLines.length ? `<p class="warn">Couldn't read line(s) ${data.invalidLines.join(", ")} of summaries/${esc(v)}.jsonl.</p>` : "";
     let evidence = null;
-    if (company && ["v3", "rules-only"].includes(v)) {
+    if (company && ["v3", "rules-only", "v4", "v4-rules"].includes(v)) {
       const response = await fetch(`/api/evidence/${encodeURIComponent(v)}/${encodeURIComponent(company.registrationNumber)}`);
       if (response.ok) evidence = await response.json();
     }
@@ -174,7 +174,7 @@ async function renderSummaries() {
     };
     const trail = evidence ? `<details><summary>Trace ${evidence.facts.length} facts to the record</summary>${evidence.facts.map((f) => `<div class="evidence"><p>${esc(f.text)}</p>${f.sources.map((path) => `<span class="source">${esc(path)} → ${esc(sourceValue(path))}</span>`).join("")}</div>`).join("")}<p class="scope">Follow-up question based on: ${evidence.followUpSources.map(esc).join(", ")}. ${evidence.selectionError ? `Model selection rejected: ${esc(evidence.selectionError)}.` : ""}</p></details>` : "";
     const checks = report && result ? `<details><summary>Checks and their limits</summary><p class="scope">${esc(report.limitations)}</p><p class="scope">${report.metrics.passedCompanies}/${report.metrics.companies} summaries passed this version's checks. ${report.metrics.challengePassed}/${report.metrics.challengeCases} challenge cases passed.</p>${failed.length ? `<p class="warn">${failed.map(esc).join(", ")}</p>` : ""}</details>` : "";
-    out.push(`<div class="summary"><div class="version">${esc(v)}${v === "v3" ? " · Final" : v === "rules-only" ? " · Comparison" : " · Early experiment"}</div>${metadata}${warn}${text ? markdown(text) : `<p class="muted">No summary for this company in this version.</p>`}${trail}${checks}</div>`);
+    out.push(`<div class="summary"><div class="version">${esc(v)}${v === "v4" ? " · Final" : v === "v4-rules" ? " · Ranked rules" : v === "v3" ? " · Previous version" : v === "rules-only" ? " · Original rules" : " · Early experiment"}</div>${metadata}${warn}${text ? markdown(text) : `<p class="muted">No summary for this company in this version.</p>`}${trail}${checks}</div>`);
   }
   if (render !== summaryRender) return;
   $("summaries").innerHTML = out.join("") || `<p class="muted">No summaries yet. Write one line per company to <code>summaries/&lt;version&gt;.jsonl</code>, then refresh.</p>`;
@@ -197,6 +197,8 @@ async function init() {
   $("versionB").innerHTML = `<option value="">nothing</option>` + vs.map((v) => `<option>${esc(v)}</option>`).join("");
   if (vs.includes("v3")) $("versionA").value = "v3";
   if (vs.includes("rules-only")) $("versionB").value = "rules-only";
+  if (vs.includes("v4")) $("versionA").value = "v4";
+  if (vs.includes("v4")) $("versionB").value = "v3";
   $("versionA").onchange = $("versionB").onchange = renderSummaries;
   if (list.length) selectCompany(list[0].registrationNumber);
 }

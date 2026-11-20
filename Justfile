@@ -39,6 +39,9 @@ evaluate:
     uv run python -m company_summaries.evaluate --version v2
     uv run python -m company_summaries.evaluate --version rules-only --require-complete
     uv run python -m company_summaries.evaluate --version v3 --require-complete
+    uv run python -m company_summaries.evaluate --version v4-rules --require-complete
+    uv run python -m company_summaries.evaluate --version v4 --require-complete
+    uv run python -m company_summaries.experiments
     uv run python -m company_summaries.report
 
 test:

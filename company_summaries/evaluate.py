@@ -2,8 +2,10 @@
 
 import argparse
 import json
+import re
 import statistics
 from collections import Counter
+from datetime import date
 
 from company_summaries.pipeline import ROOT, load_companies, write_json
 
@@ -13,12 +15,12 @@ def amount(value):
     return ("-RM " if value < 0 else "RM ") + format(abs(value), ",.0f")
 
 
-def inspect_summary(company, summary):
+def inspect_summary(company, summary, refined=False):
     """Check important source facts independently of the selection and rendering code."""
     checks = {}
     years = sorted(company["financials"]["years"], key=lambda y: y["financialYear"])
     checks["company_identity"] = company["profile"]["companyName"] in summary
-    checks["company_status"] = company["profile"]["status"].lower() in summary.lower()
+    checks["company_status"] = f"is listed as {company['profile']['status'].lower()} in " in summary
     checks["word_limit"] = 0 < len(summary.split()) <= 150
     if not years:
         checks["missing_financials"] = "No financial statements are supplied" in summary and "cannot be assessed" in summary
@@ -82,6 +84,83 @@ def inspect_summary(company, summary):
         "warrants verification of independence",
     )
     checks["no_known_unsupported_claims"] = not any(phrase in summary.lower() for phrase in forbidden)
+    if refined:
+        checks.update(inspect_refined(company, summary))
+    return checks
+
+
+def inspect_refined(company, summary):
+    """Bind amounts to their named fields and years, not just their presence somewhere."""
+    checks = {}
+    years = sorted(company["financials"]["years"], key=lambda y: y["financialYear"])
+    currency = r"-?RM \d(?:[\d,]*\d)?"
+    trend = r"(?:rose|fell|was unchanged)"
+    if len(years) > 1:
+        pattern = (
+            rf"Revenue ({trend}) from ({currency}) \(FY(\d{{4}})\) to ({currency}) \(FY(\d{{4}})\); "
+            rf"profit after tax ({trend}) from ({currency}) to ({currency}) over that period"
+        )
+        match = re.search(pattern, summary)
+        first, last = years[0], years[-1]
+        if match:
+            values = match.groups()
+            checks["amounts_bound_to_years"] = values[1:5] == (
+                amount(first["statements"]["revenue"]),
+                str(first["financialYear"]),
+                amount(last["statements"]["revenue"]),
+                str(last["financialYear"]),
+            ) and values[6:] == (amount(first["statements"]["profitAfterTax"]), amount(last["statements"]["profitAfterTax"]))
+
+            def direction(key):
+                delta = last["statements"][key] - first["statements"][key]
+                return "rose" if delta > 0 else "fell" if delta < 0 else "was unchanged"
+
+            checks["trend_directions"] = values[0] == direction("revenue") and values[5] == direction("profitAfterTax")
+        else:
+            checks["amounts_bound_to_years"] = checks["trend_directions"] = False
+        for middle in years[1:-1]:
+            if (
+                middle["statements"]["profitAfterTax"]
+                < 0
+                <= min(first["statements"]["profitAfterTax"], last["statements"]["profitAfterTax"])
+            ):
+                checks["interim_loss_not_hidden"] = (
+                    f"FY{middle['financialYear']} profit after tax was {amount(middle['statements']['profitAfterTax'])}"
+                    in summary
+                )
+    if years:
+        latest = years[-1]
+        pattern = (
+            rf"FY(\d{{4}}) operating cash flow was ({currency}); free cash flow after capital expenditure was ({currency})"
+        )
+        match = re.search(pattern, summary)
+        s = latest["statements"]
+        checks["cash_amounts_bound_to_fields"] = bool(match) and match.groups() == (
+            str(latest["financialYear"]),
+            amount(s["operatingCashFlow"]),
+            amount(s["operatingCashFlow"] - s["capitalExpenditure"]),
+        )
+    for holder in company["relationships"]["shareholders"]:
+        if holder["type"] == "company" and holder["percentage"] > 50:
+            country = holder.get("incorporatedIn") or "jurisdiction not supplied"
+            checks["majority_corporate_owner"] = f"{holder['name']} ({holder['percentage']:g}%; {country})" in summary
+    directors = company["relationships"]["directors"]
+    recent = sum(date(2025, 1, 1) <= date.fromisoformat(d["appointedOn"]) <= date(2025, 12, 31) for d in directors)
+    if "listed directors" in summary or recent * 2 > len(directors):
+        checks["appointments_as_of_record_date"] = (
+            f"{recent} of {len(directors)} listed directors {'was' if recent == 1 else 'were'} appointed during 2025" in summary
+        )
+    allowed = {amount(v) for y in years for v in y["statements"].values()}
+    allowed.add(amount(company["profile"]["shareCapital"]))
+    for y in years:
+        s = y["statements"]
+        allowed.update(
+            [amount(s["operatingCashFlow"] - s["capitalExpenditure"]), amount(s["currentLiabilities"] - s["currentAssets"])]
+        )
+    pending = [c for c in company["litigation"]["cases"] if c["role"] == "defendant" and c["status"] == "Pending"]
+    allowed.add(amount(sum(c["claimAmount"] for c in pending)))
+    checks["no_unrecognised_currency_amounts"] = all(value in allowed for value in re.findall(currency, summary))
+    checks["separated_reading_sections"] = len(summary.split("\n\n")) >= 3
     return checks
 
 
@@ -104,13 +183,13 @@ def evaluate(version):
         if cid not in companies:
             results.append({"registrationNumber": cid, "passed": False, "checks": {"known_id": False}})
             continue
-        checks = inspect_summary(companies[cid], text)
+        checks = inspect_summary(companies[cid], text, refined=version in {"v4", "v4-rules"})
         if version in {"v1", "v2"}:
             # Exact amounts and sentence patterns are contracts of the final renderer,
             # not fair grading rules for freely phrased baseline summaries.
             common_checks = {"company_identity", "word_limit", "no_known_unsupported_claims"}
             checks = {key: value for key, value in checks.items() if key in common_checks}
-        if version in ("v3", "rules-only"):
+        if version in ("v3", "rules-only", "v4", "v4-rules"):
             e = evidence.get(cid, {})
             checks["evidence_present"] = bool(e) and e.get("summary") == text
             checks["selection_valid"] = bool(e) and e.get("selection_error") is None
@@ -135,7 +214,10 @@ def evaluate(version):
         if item["id"] not in by_id:
             continue
         text = by_id[item["id"]]
-        checks = {f"contains:{s}": s in text for s in item["must_contain"]}
+        expected = item["must_contain"]
+        if version in {"v4", "v4-rules"}:
+            expected = [s.replace("defendant case(s) show", "defendant cases show") for s in expected]
+        checks = {f"contains:{s}": s in text for s in expected}
         checks.update({f"excludes:{s}": s.lower() not in text.lower() for s in item.get("must_not_contain", [])})
         challenge_results.append(
             {"registrationNumber": item["id"], "reason": item["reason"], "passed": all(checks.values()), "checks": checks}
@@ -172,7 +254,7 @@ def evaluate(version):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--version", default="v3", choices=["v1", "v2", "v3", "rules-only"])
+    parser.add_argument("--version", default="v4", choices=["v1", "v2", "v3", "rules-only", "v4", "v4-rules"])
     parser.add_argument("--require-complete", action="store_true")
     args = parser.parse_args()
     report = evaluate(args.version)

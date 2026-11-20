@@ -215,7 +215,7 @@ def get_version(version: str) -> SummaryVersion:
 
 @app.get("/api/evidence/{version}/{registration_number}")
 def get_evidence(version: str, registration_number: str) -> EvidenceRow:
-    if version not in {"v3", "rules-only"}:
+    if version not in {"v3", "rules-only", "v4", "v4-rules"}:
         raise HTTPException(404, "This experiment has no sentence-level evidence")
     path = ROOT / "evaluations" / f"{version}-evidence.json"
     if not path.is_file():
@@ -229,7 +229,7 @@ def get_evidence(version: str, registration_number: str) -> EvidenceRow:
 
 @app.get("/api/evaluations/{version}")
 def get_evaluation(version: str) -> EvaluationReport:
-    if version not in {"v1", "v2", "v3", "rules-only"}:
+    if version not in {"v1", "v2", "v3", "rules-only", "v4", "v4-rules"}:
         raise HTTPException(404, "Unknown experiment")
     path = ROOT / "evaluations" / f"{version}-report.json"
     if not path.is_file():

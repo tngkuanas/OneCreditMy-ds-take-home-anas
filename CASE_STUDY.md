@@ -4,91 +4,93 @@
 
 The summary should help a reviewer decide what to investigate next. It should not make the supplier decision for them.
 
-I prioritised factual accuracy over polished language. A fluent paragraph that confuses profit with cash, or a court claim with an established debt, would make the review worse. The summary therefore needs to cover:
+I prioritised factual accuracy over fluent writing. A paragraph that confuses profit with cash, or a court claim with a proven debt, would make the review worse. My criteria are:
 
-- What the company does and its recorded status.
-- Revenue and profit over the available period, with financial years attached.
-- Operating cash flow and spending on long-term assets.
-- Material exceptions: missing accounts, negative equity, short-term funding gaps, audit warnings, and relevant litigation.
-- One practical follow-up question grounded in the record.
+- Explain what the company does and its recorded status.
+- Describe revenue and profit trends with the relevant years, without hiding important interim losses.
+- Distinguish accounting profit from operating and free cash flow.
+- Preserve missing accounts, audit exceptions, negative equity, funding gaps and material litigation.
+- Include useful ownership or director context without inventing governance concerns.
+- End with a practical follow-up grounded in the record.
 
-The initial target was 100–150 words. I kept 150 as the acceptance ceiling, but dropped the minimum: a company with no accounts should receive an honest short summary, rather than a paragraph padded with speculation. A material warning should never be silently removed to meet a word limit.
+The target is a short first read, normally 100–150 words. I allow shorter summaries when additional detail adds little, especially when the source is sparse. Critical facts take precedence over length; if they exceed 150 words, the output fails acceptance rather than silently losing a warning.
 
-I deliberately avoided a risk score. There are no supplier outcomes, sector benchmarks, contract sizes, or agreed decision thresholds in the data. A numeric score would look precise without having a defensible meaning.
+I avoided a risk score. There are no supplier outcomes, contract sizes, sector benchmarks or agreed thresholds in the data. A score would look precise without having a defensible meaning.
 
 ## What you built
 
-The final system covers **all 50 companies**. It is a small Python pipeline with three steps:
+The final version is **v4**, covering **all 50 companies**. It uses Python and **qwen3.5:9b through the local Ollama HTTP API**. The model was already installed, which avoided hosted API keys and quotas. This is a local API rather than one of the hosted free-tier providers suggested in the brief.
 
-1. **Build verified facts.** Python reads each company, sorts the available financial years, calculates free cash flow and funding gaps, and records the source paths behind each sentence.
-2. **Select supporting detail.** An LLM chooses up to two optional facts from that catalog, such as cash versus borrowings, a quick ratio, or direct ownership. It returns fact IDs as JSON, not a paragraph.
-3. **Render and check.** Python includes the required facts, adds selected detail when it fits, and appends a rule-based follow-up question. Unknown IDs, malformed JSON, and truncated selections are rejected. Mandatory facts still render, but the selection error is visible and fails acceptance.
+The pipeline has three steps:
 
-The output is `summaries/v3.jsonl`, in the supplied viewer's format. The viewer also shows the source values behind each sentence and the checks for that company. `rules-only.jsonl` is a comparison that takes the first two optional facts without calling an LLM.
+1. Python builds a catalog of facts, performs arithmetic and attaches source paths to each sentence.
+2. The model chooses up to two optional fact IDs. Its JSON schema lists only the optional IDs available for that company; it cannot write the paragraph or invent figures.
+3. Python preserves required information, fits optional details into the remaining word budget, and renders short paragraphs with a follow-up question.
 
-I used **qwen3.5:9b through the local Ollama HTTP API**, with temperature 0, seed 42, thinking disabled, and an 8,192-token context. This is a local API, rather than one of the hosted free-tier providers suggested in the brief. The model was already installed, so this avoided keys and quota limits. The pipeline makes no hosted generation API calls. Model metadata is recorded in `evaluations/environment.json`; sampling settings do not guarantee identical output across hardware or model updates.
+The submitted output is `summaries/v4.jsonl`. The viewer shows it beside v3 and lets the reviewer expand the evidence. `v4-rules.jsonl` uses the same facts and wording but selects optional details with contextual rules, allowing a direct comparison with the LLM selector.
 
-Every model response is saved under `runs/`. Cache keys include the prompt, facts, model name, and generation settings. The cached responses allow evaluation and regeneration without another model call. The final pipeline adds no new dependencies beyond the supplied environment.
+### What changed during development
 
-### Why I changed the approach
+**v1:** Asking for the whole paragraph was easy, but unreliable. On SYN-000029 it produced 207 words, described five shareholder-directors when the record lists four shareholders, and raised an unsupported audit independence concern.
 
-The first approach asked the model to write the whole summary. On **SYN-000029**, v1 produced 207 words, described five shareholder-directors when the record lists four shareholders, and suggested audit independence concerns merely because the same audit firm appeared repeatedly.
+**v2:** A tighter prompt corrected the shareholder count but still produced 206 words, repeated the audit concern and rounded -RM 8,059 to a loss of RM 9k. The saved responses and source-comparison findings remain in the repository.
 
-I tightened the prompt. v2 corrected the shareholder count, but still produced 206 words, repeated the audit independence suggestion, and rounded FY2023 free cash flow of -RM 8,059 to a loss of RM 9k. These were not problems I wanted to solve with an increasingly long list of instructions.
+**v3:** I restricted the model to choosing verified facts. This controlled the wording and figures, but summaries were repetitive and largely listed numbers. The outputs differed from a simple rules-only comparison for only 4/50 companies.
 
-That led to the final design: the model can decide which optional information to include, but cannot invent financial figures or write unsupported conclusions. This sacrifices some natural language variety. For this task, that is a trade-off I am comfortable making.
+**v4:** I added explicit rising/falling trends and separated business context, financials, concerns and the next check into short paragraphs. Majority corporate ownership is preserved, and recent director appointments are counted against the record date. When most listed directors were appointed during 2025, that fact is retained regardless of model selection; it gives context on the current board, not a governance risk label. An interim loss between profitable endpoint years is also required information. Ownership snapshots are not described as ownership changes; appointment dates are not treated as evidence of turnover or misconduct.
+
+The first v4 trial rejected **5/50** model selections because they included IDs that were not available as optional facts. The summaries still retained required information, but the run failed acceptance. I then constrained the generation schema itself to available IDs. The trial is saved in `evaluations/v4-selection-trial.json`, including links to the original responses.
+
+### Reproduction
+
+The model uses temperature 0, seed 42, thinking disabled and an 8,192-token context. These settings do not guarantee identical output across hardware or model updates. The installed model digest and Q4_K_M quantisation are recorded in `evaluations/environment.json`.
+
+Every response is saved under `runs/`. Cache keys include the facts, prompt, model name, schema and settings. A one-company refresh preserves other saved companies, and outputs are published after generation completes. The final system adds no libraries beyond the supplied environment.
+
+Run `just serve` to inspect saved outputs and `just check` to reproduce checks without calling a model. `just generate` is optional and uses the local API. Observed request times and token counts are reported in [evaluations/RESULTS.md](evaluations/RESULTS.md); they are not estimates of total development time. There are no billed generation API calls, although local compute is not cost-free.
 
 ## How you know whether it's good
 
-I used three forms of evidence. The saved measurements and per-company results are in [evaluations/RESULTS.md](evaluations/RESULTS.md).
+I separate factual checks, scenario coverage and actual reader usefulness. The first two can be tested here. The third still needs people.
 
-### Source checks across all 50 companies
+### Source checks across the supplied companies
 
-The evaluator reads the original records separately from the renderer. It checks the required amounts, years, status, historical audit exceptions, legal roles, pending-claim totals, relevant caveats, and optional figures when present. It also checks coverage, duplicate IDs, the word limit, and whether the evidence paths resolve.
+The evaluator reads the original records separately from the renderer. It verifies status, years, required amounts, audit exceptions, legal roles, pending-claim totals, optional figures, source paths, coverage and length.
 
-The final version passes every applicable automated check for **50/50 companies**. There are no duplicate IDs or rejected model selections. Summaries range from **58 to 131 words**, with a median of **107**; **44/50** fall within the original 100–150 word target.
+The stronger checks bind amounts to named fields and years. Swapping the first and last revenue figures cannot pass merely because both numbers still appear somewhere in the paragraph. Other checks detect incorrect trend directions, invented extra currency amounts, missing interim losses and appointment counts that include dates after the record date.
 
-The data profile also checks basic statement arithmetic. All **508** tested identities match within a one-ringgit tolerance. There are **101 null ratio values**, which remain unavailable rather than being converted to zero. These checks cover a few accounting identities, not a full audit of the synthetic data or all ratio definitions.
+All **50/50** final summaries pass acceptance, with **1,094/1,094** applicable automated checks passing. The median length is **104 words**, with a range of **52–134**; **33/50** fall within the original 100–150 word target. The others are shorter, rather than padded with optional detail. Per-company results are saved in `v4-report.json` and the results report. Basic source profiling also checks 508 statement identities; all agree within RM 1. There are 101 null ratio values, which remain unavailable rather than being treated as zero. These are limited integrity checks, not an audit of every ratio definition.
 
-### A selected set of difficult records
+### Development cases and additional stress cases
 
-I used a **12-company challenge set**, covering missing accounts, a single reporting year, losses, negative equity, historical audit disclaimers, winding-up status, and litigation with different roles and outcomes. The expected source facts are saved separately in `evaluations/review-set.json`. All 12 pass.
+The original 12-company challenge set covers missing accounts, single-year data, losses, negative equity, older audit warnings, winding-up status and different litigation roles. For example:
 
-Three examples matter particularly:
+- SYN-000217 must retain its FY2023 disclaimer despite a clean FY2024 opinion.
+- SYN-000286 has RM 466,500 in pending defendant claims, not proven liabilities, and a pending winding-up petition.
+- SYN-000545 is winding up despite positive reported profit; its status and historical going-concern warning must remain visible.
 
-- **SYN-000217:** the FY2023 disclaimer remains visible even though FY2024 has an unqualified opinion.
-- **SYN-000286:** pending defendant claims total RM 466,500; the summary does not treat this as proven debt, and it flags the pending winding-up petition.
-- **SYN-000545:** the company is winding up despite positive reported profit, so its status and historical going-concern warning take priority over reassuring financial figures.
+I also generated **24 additional synthetic stress cases** using a fixed seed. They test interim losses, foreign corporate ownership, date boundaries, zero revenue, null ratios and legal roles. v4 passes **24/24** specified cases; v3 passes **12/24** against these expanded requirements. Some differences reflect newly required context and explicit trend wording, so this is not an estimate of v3's factual accuracy.
 
-These are purposively selected development cases, not a held-out or representative test set. The source review was AI-assisted. I do not present it as an independent human assessment.
+These tests exercise the fact builder and renderer with explicit fact requests; they do not measure the model's prioritisation on unseen records. The records are synthetic perturbations of the supplied schema, not independently sourced companies or a held-out real-world test set. Once inspected, they are regression cases. I do not claim statistical generalisation from them.
 
-### Regression and mutation tests
+The automated tests also deliberately corrupt outputs: they swap figures, change years or directions, alter ownership percentages, remove audit warnings and promote claims into liabilities. Cache, partial-update and interrupted-run tests cover operational failures as well as summary content.
 
-The tests exercise errors that could change a reviewer's interpretation: reversing financial-year order, converting a null ratio to zero, treating a plaintiff claim as a defendant liability, losing an older audit warning, and accepting invented model IDs.
+### Human evaluation is prepared, not completed
 
-Mutation tests deliberately change a revenue figure, an ownership percentage, a ratio, an audit opinion, and a legal caveat. The evaluator catches these changes. This gives more useful evidence than only checking that the code runs. Run the complete checks with `just check`; no local model is needed for that command.
+`evaluations/REVIEW_PACKET.md` contains 16 shuffled A/B pairs. Eight compare v3 with v4; eight compare v4 with ranked rules to isolate the model's role. Reviewers can inspect source records and record factual errors, omissions, clarity, preferences and time spent. Version assignments are kept in a separate key.
 
-### What the results do not prove
+The shipped ratings are blank. The reporting code counts actual entered preferences, not model-generated ratings. This is a practical way to collect feedback, but it is not completed human evaluation or a double-blind study.
 
-Passing these checks does not establish that every sentence is the best possible summary or that reviewers make better decisions. The evaluator contains explicit rules, and the renderer uses the same task definition. There can still be omissions that neither anticipates. The fixed wording is also repetitive, and aggregation of litigation loses case-level detail; the full records remain available alongside it.
-
-There is also limited evidence that the LLM is necessary. Its output differs from the rules-only comparison for just **4/50 companies**. Three omit the share-capital sentence for companies without financials; one selects ownership instead of a quick ratio. Both approaches pass the same required-fact checks. I would not claim that the model improves screening quality based on this result.
-
-The 50 final model requests used **42,184 input tokens** and **639 output tokens**. Their saved request times total **426.39 seconds**, with a median of **8.92 seconds**. These are observed local inference times, not total development time or hosted API benchmarks. There were no billed API calls; hardware and electricity costs were not measured.
+Passing the automated checks does not prove that every important fact was selected or that a reviewer makes better decisions. The evaluator and renderer share a task definition, even though their checks are implemented separately. v4 differs from its ranked-rules comparison for **48/50** companies, largely because the model selects less optional detail, but different selections do not establish added value. The ranked rules remain a credible simpler alternative.
 
 ## What you'd do next, and how you'd keep improving it
 
-My next step would be a small review exercise with the people who vet suppliers. I would show the rules-only and model-selected summaries in random order, ask which information they missed, and measure how quickly they identify the issues that require follow-up. I would agree the rubric before collecting those results.
+The next step is to collect the prepared human ratings. I would agree what matters with the supplier-review team first, then compare factual errors, important omissions, clarity, review time and preferences. A tie is a valid result. If the model does not improve relevance or save time, I would keep the ranked rules rather than retain an inference cost without evidence of benefit.
 
-If the model does not improve relevance or reduce review time, I would keep the rules-only version. The current experiment gives no reason to pay an ongoing inference cost simply to retain an LLM in the architecture.
+I would then add contract context, such as the size and type of the proposed engagement. That would make prioritisation more useful without pretending that a single threshold applies to every industry or supplier.
 
-For a second iteration, I would focus on:
+For continued improvement, I would retain the regression cases, add reviewed failures, and reserve genuinely new records before tuning the next version. In operation I would monitor source freshness, missing fields, rejected selections, failed checks and reviewer corrections. Aggregated litigation and fixed sentence wording remain limitations; the full records should stay available alongside the summary.
 
-1. **Contract context:** let reviewers specify the contract size and service so the summary can prioritise relevant concerns without inventing universal risk thresholds.
-2. **Coverage beyond the current rules:** test material director changes, foreign corporate ownership, middle-year reversals, and case-specific details that a short aggregate may obscure.
-3. **Freshness and monitoring:** show the record date prominently, refresh summaries when records change, and track failed checks, selection errors, missing fields, and reviewer corrections.
-4. **A genuinely unseen evaluation set:** retain a fixed regression set, add reviewed failures to it, and test each change against records that were not used to design the rules.
+This is a reproducible screening prototype, not a calibrated credit model or a production supplier-approval system.
 
-This submission is a complete prototype with saved outputs and reproducible checks. It has no production deployment, calibrated credit model, or measured impact on supplier decisions.
-
-**AI assistance:** Codex assisted with implementation, prompts, source comparisons, tests, documentation, and drafting this case study. The local Qwen model generated v1 and v2 and selected optional facts for v3. No independent human evaluation is claimed. The decisions and limitations above should be reviewed and understood before this is submitted or presented.
+**AI assistance:** Codex assisted with implementation, prompts, source comparisons, tests, experiments, documentation and drafting this case study. The local Qwen model generated v1/v2 and selected optional facts for v3/v4. No independent human evaluation is claimed. The code, examples and decisions should be understood before the work is submitted or presented.

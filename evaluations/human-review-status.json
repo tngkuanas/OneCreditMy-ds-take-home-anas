@@ -1,0 +1,8 @@
+{
+  "status": "pending_human_review",
+  "completed_pairs": 0,
+  "total_pairs": 16,
+  "matches_current_outputs": true,
+  "preferences": {},
+  "limits": "No reader usefulness or model preference result exists until people enter actual ratings. A convenience review is not a representative study."
+}
