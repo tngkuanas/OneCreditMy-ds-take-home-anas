@@ -152,7 +152,8 @@ async function renderSummaries() {
   for (const v of [$("versionA").value, $("versionB").value].filter(Boolean)) {
     const data = await loadVersion(v);
     const text = company && data.summaries[company.registrationNumber];
-    const warn = data.invalidLines.length ? `<p class="warn">Couldn't read line(s) ${data.invalidLines.join(", ")} of summaries/${esc(v)}.jsonl.</p>` : "";
+    const warn = (data.invalidLines.length ? `<p class="warn">Couldn't read line(s) ${data.invalidLines.join(", ")} of summaries/${esc(v)}.jsonl.</p>` : "")
+      + (data.exportsMatchSnapshot === false ? `<p class="warn">An output update is incomplete. Showing the last committed run; regenerate outputs before accepting results.</p>` : "");
     let evidence = null;
     if (company && ["v3", "rules-only", "v4", "v4-rules"].includes(v)) {
       const response = await fetch(`/api/evidence/${encodeURIComponent(v)}/${encodeURIComponent(company.registrationNumber)}`);
@@ -162,7 +163,8 @@ async function renderSummaries() {
       const response = await fetch(`/api/evaluations/${encodeURIComponent(v)}`);
       reports[v] = response.ok ? await response.json() : null;
     }
-    const report = reports[v];
+    const report = reports[v] && reports[v].artifactSha256 === data.artifactSha256 && data.exportsMatchSnapshot !== false ? reports[v] : null;
+    if (evidence && evidence.summary !== text) evidence = null;
     const result = report && company && report.companies.find((r) => r.registrationNumber === company.registrationNumber);
     const failed = result ? Object.entries(result.checks).filter(([, ok]) => !ok).map(([name]) => name) : [];
     const status = result ? `<span class="badge ${result.passed ? "" : "failed"}">${result.passed ? "Source checks passed" : `${failed.length} check(s) need review`}</span>` : "";

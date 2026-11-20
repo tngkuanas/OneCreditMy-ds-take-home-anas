@@ -171,6 +171,11 @@ def main():
             "- Majority corporate owners are included; director appointments use the record date, "
             "without inferring governance problems.",
             "- Interim losses between profitable endpoints cannot be hidden by first-versus-last comparisons.",
+            "- When the latest profit direction conflicts with the endpoint trend, the latest comparison is mandatory.",
+            "- Full-gate mutation tests cover single-year field swaps, wrong years, "
+            "invented audit opinions and wrong legal counts.",
+            "- A single committed snapshot binds summary and evidence; exports must match it. "
+            "The viewer rejects stale evaluation revisions and shows the previous snapshot after interrupted publication.",
             f"- Synthetic stress requirements: v3 {stress['versions']['v3']['passed']}/24; "
             f"v4 {stress['versions']['v4']['passed']}/24.",
             "- These are synthetic regression requirements, including newly added coverage; "

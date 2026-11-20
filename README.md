@@ -31,6 +31,10 @@ just evaluate
 No API key is needed for Ollama. Model downloads and new local inference are optional for reviewing the saved submission.
 The model selects optional facts; Python computes figures, preserves required concerns, and renders the summary.
 Local model output is cached in `runs/`, with sentence-level source paths in `evaluations/v4-evidence.json`.
+Final versions also have a `*-snapshot.json` containing the committed summary/evidence pair.
+The viewer reads that snapshot; evaluation checks that the JSONL/JSON exports match it.
+Use generation commands to update a final run rather than hand-editing its exports; a new standalone
+`summaries/<version>.jsonl` without a snapshot continues to work in the original viewer format.
 See [evaluations/RESULTS.md](evaluations/RESULTS.md) for measured results and [WALKTHROUGH.md](WALKTHROUGH.md)
 for a short explanation of the code. The final system uses only the Python standard library beyond the supplied viewer dependencies.
 

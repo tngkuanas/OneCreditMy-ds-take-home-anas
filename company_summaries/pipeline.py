@@ -9,6 +9,7 @@ import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
 
+from company_summaries.artifacts import publish, read_snapshot
 from company_summaries.facts import build_facts, follow_up
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -135,8 +136,9 @@ def run(companies, model=MODEL, offline=False, version="v3", merge=False):
     evidence_path = ROOT / "evaluations" / f"{output_version}-evidence.json"
     rows, evidence = [], []
     if merge and out.exists() and evidence_path.exists():
-        rows = [json.loads(line) for line in out.read_text().splitlines() if line.strip()]
-        evidence = json.loads(evidence_path.read_text())
+        saved_rows, saved_evidence = read_snapshot(ROOT, output_version)
+        rows = [json.loads(line) for line in saved_rows.splitlines() if line.strip()]
+        evidence = json.loads(saved_evidence) if saved_evidence else []
     for i, company in enumerate(companies, 1):
         facts = fact_builder(company)
         if offline:
@@ -167,15 +169,11 @@ def run(companies, model=MODEL, offline=False, version="v3", merge=False):
             + (f"; selection rejected: {error}" if error else ""),
             flush=True,
         )
-    # Publish only a finished run; an interruption leaves the previous outputs intact.
-    # Individual model responses are cached immediately, so retries still resume cheaply.
+    # One authoritative snapshot commits both artifacts. JSONL/JSON exports are
+    # restored on ordinary write failure; a crash cannot split snapshot readers.
     rows.sort(key=lambda r: r["registrationNumber"])
     evidence.sort(key=lambda r: r["registrationNumber"])
-    out.parent.mkdir(parents=True, exist_ok=True)
-    temp = out.with_suffix(".tmp")
-    temp.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows))
-    temp.replace(out)
-    write_json(evidence_path, evidence)
+    publish(ROOT, output_version, rows, evidence)
     return rows, evidence
 
 

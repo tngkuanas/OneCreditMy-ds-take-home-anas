@@ -9,6 +9,8 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 from pydantic.alias_generators import to_camel
 
+from company_summaries.artifacts import artifact_revision, mirrors_match, read_snapshot, revision
+
 ROOT = Path(__file__).resolve().parent.parent
 COMPANIES = ROOT / "data" / "companies.jsonl"
 SUMMARIES = ROOT / "summaries"
@@ -108,6 +110,9 @@ class SummaryLine(Model):
 class SummaryVersion(Model):
     summaries: dict[str, str]
     invalid_lines: list[int]
+    content_sha256: str
+    artifact_sha256: str
+    exports_match_snapshot: bool
 
 
 class EvidenceFact(Model):
@@ -155,6 +160,8 @@ class EvaluationResult(Model):
 
 
 class EvaluationReport(Model):
+    artifact_sha256: str
+    summary_sha256: str
     metrics: EvaluationMetrics
     companies: list[EvaluationResult]
     limitations: str
@@ -191,17 +198,22 @@ def get_company(registration_number: str) -> Company:
 
 @app.get("/api/summaries")
 def list_versions() -> list[str]:
-    return sorted(p.stem for p in SUMMARIES.glob("*.jsonl"))
+    exports = {p.stem for p in SUMMARIES.glob("*.jsonl")}
+    snapshots = {p.name.removesuffix("-snapshot.json") for p in (ROOT / "evaluations").glob("*-snapshot.json")}
+    return sorted(exports | snapshots)
 
 
 @app.get("/api/summaries/{version}")
 def get_version(version: str) -> SummaryVersion:
     path = SUMMARIES / f"{version}.jsonl"
-    if not re.fullmatch(r"[A-Za-z0-9._-]+", version) or not path.is_file():
+    if not re.fullmatch(r"[A-Za-z0-9._-]+", version):
+        raise HTTPException(404, f"No summaries/{version}.jsonl")
+    if not path.is_file() and not (ROOT / "evaluations" / f"{version}-snapshot.json").is_file():
         raise HTTPException(404, f"No summaries/{version}.jsonl")
     summaries: dict[str, str] = {}
     invalid_lines: list[int] = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+    text, evidence = read_snapshot(ROOT, version)
+    for number, line in enumerate(text.splitlines(), start=1):
         if not line.strip():
             continue
         try:
@@ -210,7 +222,13 @@ def get_version(version: str) -> SummaryVersion:
             invalid_lines.append(number)
             continue
         summaries[row.registration_number] = row.summary
-    return SummaryVersion(summaries=summaries, invalid_lines=invalid_lines)
+    return SummaryVersion(
+        summaries=summaries,
+        invalid_lines=invalid_lines,
+        content_sha256=revision(text),
+        artifact_sha256=artifact_revision(text, evidence),
+        exports_match_snapshot=mirrors_match(ROOT, version),
+    )
 
 
 @app.get("/api/evidence/{version}/{registration_number}")
@@ -218,9 +236,12 @@ def get_evidence(version: str, registration_number: str) -> EvidenceRow:
     if version not in {"v3", "rules-only", "v4", "v4-rules"}:
         raise HTTPException(404, "This experiment has no sentence-level evidence")
     path = ROOT / "evaluations" / f"{version}-evidence.json"
-    if not path.is_file():
+    if not path.is_file() and not (ROOT / "evaluations" / f"{version}-snapshot.json").is_file():
         raise HTTPException(404, "Evidence is not available yet")
-    rows = TypeAdapter(list[EvidenceRow]).validate_json(path.read_text(encoding="utf-8"))
+    _, evidence_text = read_snapshot(ROOT, version)
+    if evidence_text is None:
+        raise HTTPException(404, "Evidence is not available yet")
+    rows = TypeAdapter(list[EvidenceRow]).validate_json(evidence_text)
     for row in rows:
         if row.registration_number == registration_number:
             return row
@@ -234,7 +255,14 @@ def get_evaluation(version: str) -> EvaluationReport:
     path = ROOT / "evaluations" / f"{version}-report.json"
     if not path.is_file():
         raise HTTPException(404, "Run evaluation first")
-    return EvaluationReport.model_validate_json(path.read_text(encoding="utf-8"))
+    try:
+        report = EvaluationReport.model_validate_json(path.read_text(encoding="utf-8"))
+    except ValidationError as exc:
+        raise HTTPException(409, "Evaluation format changed; rerun evaluation") from exc
+    text, evidence = read_snapshot(ROOT, version)
+    if report.artifact_sha256 != artifact_revision(text, evidence):
+        raise HTTPException(409, "Summary changed; rerun evaluation before showing check results")
+    return report
 
 
 app.mount("/", StaticFiles(directory=ROOT / "app" / "static", html=True), name="static")

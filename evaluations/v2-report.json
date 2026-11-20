@@ -1,4 +1,6 @@
 {
+  "artifact_sha256": "9136a12e8a66818eb37cf1b2a168e0f15c42d9918ccfcc15de358059cedf13e0",
+  "summary_sha256": "3eb2f0809362cf3400c80effd8aea4230ed26cf80c0a3db2c94494b59261c001",
   "metrics": {
     "version": "v2",
     "companies": 1,

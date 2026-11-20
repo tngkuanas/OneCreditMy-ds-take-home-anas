@@ -1,5 +1,5 @@
 {
-  "evaluated_renderer_sha256": "28f75dbff2f22ad431ff4f27debd36ed6dd69b8fd90e1dd544e4ac98e1a9b8c6",
+  "evaluated_renderer_sha256": "6468cade4be1ff06742fd70c93c9d7b92ec6f7aaa77b8215418f6b59094526bd",
   "cases_per_version": 24,
   "versions": {
     "v3": {
@@ -192,7 +192,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 7 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 108,130 (FY2022) to RM 226,286 (FY2024); profit after tax fell from RM 8,357 to RM 4,892 over that period. Between those endpoints, FY2023 profit after tax was -RM 8,548. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
+      "summary": "Synthetic Stress 7 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 108,130 (FY2022) to RM 226,286 (FY2024); profit after tax fell from RM 8,357 to RM 4,892 over that period. Between those endpoints, FY2023 profit after tax was -RM 8,548. FY2024 profit after tax rose versus FY2023 (-RM 8,548). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
     },
     {
       "id": "TEST-000008",
@@ -218,7 +218,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 8 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue fell from RM 327,016 (FY2022) to RM 321,004 (FY2024); profit after tax fell from RM 6,056 to RM 5,008 over that period. Between those endpoints, FY2023 profit after tax was -RM 2,443. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
+      "summary": "Synthetic Stress 8 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue fell from RM 327,016 (FY2022) to RM 321,004 (FY2024); profit after tax fell from RM 6,056 to RM 5,008 over that period. Between those endpoints, FY2023 profit after tax was -RM 2,443. FY2024 profit after tax rose versus FY2023 (-RM 2,443). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
     },
     {
       "id": "TEST-000009",
@@ -244,7 +244,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 9 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue fell from RM 372,607 (FY2022) to RM 351,433 (FY2024); profit after tax fell from RM 6,293 to RM 5,760 over that period. Between those endpoints, FY2023 profit after tax was -RM 16,686. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
+      "summary": "Synthetic Stress 9 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue fell from RM 372,607 (FY2022) to RM 351,433 (FY2024); profit after tax fell from RM 6,293 to RM 5,760 over that period. Between those endpoints, FY2023 profit after tax was -RM 16,686. FY2024 profit after tax rose versus FY2023 (-RM 16,686). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
     },
     {
       "id": "TEST-000010",
@@ -296,7 +296,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 11 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue fell from RM 340,789 (FY2022) to RM 155,584 (FY2024); profit after tax rose from RM 2,319 to RM 3,667 over that period. Between those endpoints, FY2023 profit after tax was RM 4,517. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. Recorded cases: 1 as plaintiff and 0 as defendant. None are recorded as pending defendant claims or defendant judgments.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
+      "summary": "Synthetic Stress 11 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue fell from RM 340,789 (FY2022) to RM 155,584 (FY2024); profit after tax rose from RM 2,319 to RM 3,667 over that period. FY2024 profit after tax fell versus FY2023 (RM 4,517). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. Recorded cases: 1 as plaintiff and 0 as defendant. None are recorded as pending defendant claims or defendant judgments.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
     },
     {
       "id": "TEST-000012",
@@ -322,7 +322,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 12 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 189,369 (FY2022) to RM 272,510 (FY2024); profit after tax fell from RM 8,158 to RM 4,316 over that period. Between those endpoints, FY2023 profit after tax was RM 3,264. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. Recorded cases: 1 as plaintiff and 0 as defendant. None are recorded as pending defendant claims or defendant judgments.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
+      "summary": "Synthetic Stress 12 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 189,369 (FY2022) to RM 272,510 (FY2024); profit after tax fell from RM 8,158 to RM 4,316 over that period. FY2024 profit after tax rose versus FY2023 (RM 3,264). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. Recorded cases: 1 as plaintiff and 0 as defendant. None are recorded as pending defendant claims or defendant judgments.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
     },
     {
       "id": "TEST-000013",
@@ -400,7 +400,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 15 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 130,775 (FY2022) to RM 226,708 (FY2024); profit after tax fell from RM 9,458 to RM 8,068 over that period. Between those endpoints, FY2023 profit after tax was RM 5,079. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. Recorded cases: 0 as plaintiff and 1 as defendant. Pending defendant claims total RM 50,820, not proven liabilities.\n\n**Next check:** Clarify current case outcomes and potential effects on delivery capacity."
+      "summary": "Synthetic Stress 15 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 130,775 (FY2022) to RM 226,708 (FY2024); profit after tax fell from RM 9,458 to RM 8,068 over that period. FY2024 profit after tax rose versus FY2023 (RM 5,079). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. Recorded cases: 0 as plaintiff and 1 as defendant. Pending defendant claims total RM 50,820, not proven liabilities.\n\n**Next check:** Clarify current case outcomes and potential effects on delivery capacity."
     },
     {
       "id": "TEST-000016",
@@ -556,7 +556,7 @@
         "no_false_governance_claim": true,
         "no_unknown_ratio_as_zero": true
       },
-      "summary": "Synthetic Stress 21 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 342,755 (FY2022) to RM 382,639 (FY2024); profit after tax rose from RM 2,307 to RM 2,822 over that period. Between those endpoints, FY2023 profit after tax was RM 9,100. FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record. 1 of 2 listed directors was appointed during 2025.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
+      "summary": "Synthetic Stress 21 Sdn. Bhd. is listed as active in Selangor; its recorded business is Software maintenance. The largest direct shareholder, Director 1, holds 100%.\n\nRevenue rose from RM 342,755 (FY2022) to RM 382,639 (FY2024); profit after tax rose from RM 2,307 to RM 2,822 over that period. FY2024 profit after tax fell versus FY2023 (RM 9,100). FY2024 operating cash flow was RM 12,000; free cash flow after capital expenditure was RM 5,000.\n\nFY2024 audit opinion: unqualified. No court cases appear in the supplied record. 1 of 2 listed directors was appointed during 2025.\n\n**Next check:** Request updated accounts and confirm capacity for the proposed contract."
     },
     {
       "id": "TEST-000022",

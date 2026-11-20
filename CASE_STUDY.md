@@ -45,7 +45,7 @@ The first v4 trial rejected **5/50** model selections because they included IDs 
 
 The model uses temperature 0, seed 42, thinking disabled and an 8,192-token context. These settings do not guarantee identical output across hardware or model updates. The installed model digest and Q4_K_M quantisation are recorded in `evaluations/environment.json`.
 
-Every response is saved under `runs/`. Cache keys include the facts, prompt, model name, schema and settings. A one-company refresh preserves other saved companies, and outputs are published after generation completes. The final system adds no libraries beyond the supplied environment.
+Every response is saved under `runs/`. Cache keys include the facts, prompt, model name, schema and settings. A one-company refresh preserves other saved companies. Summary and evidence exports are committed through one authoritative snapshot after generation completes. Ordinary write failures restore the previous exports; after a hard interruption the viewer can still read the previous complete snapshot, while evaluation rejects inconsistent exports. The final system adds no libraries beyond the supplied environment.
 
 Run `just serve` to inspect saved outputs and `just check` to reproduce checks without calling a model. `just generate` is optional and uses the local API. Observed request times and token counts are reported in [evaluations/RESULTS.md](evaluations/RESULTS.md); they are not estimates of total development time. There are no billed generation API calls, although local compute is not cost-free.
 
@@ -59,7 +59,11 @@ The evaluator reads the original records separately from the renderer. It verifi
 
 The stronger checks bind amounts to named fields and years. Swapping the first and last revenue figures cannot pass merely because both numbers still appear somewhere in the paragraph. Other checks detect incorrect trend directions, invented extra currency amounts, missing interim losses and appointment counts that include dates after the record date.
 
-All **50/50** final summaries pass acceptance, with **1,094/1,094** applicable automated checks passing. The median length is **104 words**, with a range of **52–134**; **33/50** fall within the original 100–150 word target. The others are shorter, rather than padded with optional detail. Per-company results are saved in `v4-report.json` and the results report. Basic source profiling also checks 508 statement identities; all agree within RM 1. There are 101 null ratio values, which remain unavailable rather than being treated as zero. These are limited integrity checks, not an audit of every ratio definition.
+All **50/50** final summaries pass acceptance, with **1,386/1,386** applicable automated checks passing. The median length is **104.5 words**, with a range of **52–134**; **34/50** fall within the original 100–150 word target. The others are shorter, rather than padded with optional detail. Per-company results are saved in `v4-report.json` and the results report. Basic source profiling also checks 508 statement identities; all agree within RM 1. There are 101 null ratio values, which remain unavailable rather than being treated as zero. These are limited integrity checks, not an audit of every ratio definition.
+
+An adversarial review found gaps in the original checks: swapped single-year revenue/profit, an invented audit opinion, and an incorrect petition count could pass when the evidence repeated the same error. Those cases now fail the complete acceptance command, even with matching summary/evidence files. Audit opinions and litigation counts are checked against the source, and single-year amounts are bound to their fields and year. The viewer also binds check results to the exact summary/evidence revision, rather than displaying stale green results after an update.
+
+The same review identified a content omission: SYN-000282's profit was higher than FY2022, but had fallen from RM 2,026,448 in FY2023 to RM 1,865,751 in FY2024. The latest-year reversal is now required information, as it is for the five other supplied companies whose latest direction conflicts with the endpoint comparison. This illustrates why passing a large number of checks is not sufficient evidence on its own.
 
 ### Development cases and additional stress cases
 

@@ -48,6 +48,29 @@ def build_facts(company):
                         value < 0 <= min(first["profitAfterTax"], last["profitAfterTax"]),
                     )
                 )
+        previous_index, previous_year = years[-2]
+        recent_delta = last["profitAfterTax"] - previous_year["statements"]["profitAfterTax"]
+        endpoint_delta = last["profitAfterTax"] - first["profitAfterTax"]
+        if ((endpoint_delta > 0) - (endpoint_delta < 0)) != ((recent_delta > 0) - (recent_delta < 0)):
+            # A positive endpoint comparison must not conceal the latest decline,
+            # nor should an endpoint decline conceal the latest recovery.
+            latest_year = years[-1][1]["financialYear"]
+            direction = "rose" if recent_delta > 0 else "fell" if recent_delta < 0 else "was unchanged"
+            facts = [f for f in facts if f.id != "interim_profit" or f.required]
+            facts.append(
+                Fact(
+                    "recent_profit",
+                    f"FY{latest_year} profit after tax {direction} versus FY{previous_year['financialYear']} "
+                    f"({money(previous_year['statements']['profitAfterTax'])}).",
+                    [
+                        f"financials.years.{previous_index}.financialYear",
+                        f"financials.years.{previous_index}.statements.profitAfterTax",
+                        f"financials.years.{years[-1][0]}.financialYear",
+                        f"financials.years.{years[-1][0]}.statements.profitAfterTax",
+                    ],
+                    True,
+                )
+            )
     directors = company["relationships"]["directors"]
     recent = [d for d in directors if date(2025, 1, 1) <= date.fromisoformat(d["appointedOn"]) <= AS_OF]
     if recent:
@@ -121,6 +144,7 @@ def render(company, selected):
             "missing_financials",
             "cash_flow",
             "interim_profit",
+            "recent_profit",
             "negative_equity",
             "working_capital",
             "cash_debt",
@@ -133,6 +157,7 @@ def render(company, selected):
     order = {f.id: i for i, f in enumerate(facts)}
     if "performance" in order:
         order["interim_profit"] = order["performance"] + 0.5
+        order["recent_profit"] = order["performance"] + 0.6
     used.sort(key=lambda f: order[f.id])
     paragraphs = [" ".join(f.text for f in used if f.id in group) for group in groups]
     return "\n\n".join([p for p in paragraphs if p] + [question]), [f.to_dict() for f in used], paths

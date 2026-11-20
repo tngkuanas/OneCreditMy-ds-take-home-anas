@@ -31,6 +31,8 @@ Use that explanation only once you can follow the code and verify the examples y
 
 `company_summaries/experiments.py` builds the additional stress cases and human-review packet. `company_summaries/report.py` profiles the data and builds the results report. `scripts/generate.py` is retained only to reproduce the early free-form experiments. The original viewer is under `app/`, with additions for evidence and check results.
 
+`company_summaries/artifacts.py` commits a summary/evidence pair as one snapshot. The JSONL and JSON files remain exports for submission. Failed writes cannot make the viewer combine a new summary with old evidence. Evaluation rejects exports that differ from the snapshot, and old check results are hidden when the committed run changes.
+
 ## Follow one company through the code
 
 For `SYN-000029`:
@@ -72,6 +74,7 @@ That command refreshes one company's v4 summary and preserves the other saved co
 - **Does a clean audit mean a healthy company?** No; the opinion is reported without treating it as a health guarantee.
 - **Are pending claims debts?** No; the claim amount is not established liability, and a judgment's direction is not supplied.
 - **What does passing every check mean?** The listed requirements passed, not that usefulness or general accuracy has been proven.
+- **What did adversarial review uncover?** The original evaluator could miss swapped single-year figures and incorrect audit/legal details when evidence repeated the error; the regression tests now run those examples through the complete release gate.
 - **Why no risk score?** There are no outcome labels, contract context, or justified thresholds to calibrate one.
 - **What would you improve first?** Ask real reviewers whether the summaries preserve what they need and save time.
 

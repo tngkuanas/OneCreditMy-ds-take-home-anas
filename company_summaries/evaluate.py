@@ -7,6 +7,7 @@ import statistics
 from collections import Counter
 from datetime import date
 
+from company_summaries.artifacts import artifact_revision, mirrors_match, read_snapshot, revision
 from company_summaries.pipeline import ROOT, load_companies, write_json
 
 
@@ -22,6 +23,7 @@ def inspect_summary(company, summary, refined=False):
     checks["company_identity"] = company["profile"]["companyName"] in summary
     checks["company_status"] = f"is listed as {company['profile']['status'].lower()} in " in summary
     checks["word_limit"] = 0 < len(summary.split()) <= 150
+    checks["audit_opinions_match_source"] = audit_matches(years, summary)
     if not years:
         checks["missing_financials"] = "No financial statements are supplied" in summary and "cannot be assessed" in summary
     else:
@@ -73,8 +75,19 @@ def inspect_summary(company, summary, refined=False):
             checks["claims_not_liabilities"] = "not proven liabilities" in summary
         if any(c["role"] == "defendant" and c["status"] == "Judgment entered" for c in cases):
             checks["judgment_uncertainty"] = "outcome is unspecified" in summary
-        if any(c["role"] == "defendant" and c["status"] == "Pending" and c["caseType"] == "Winding-up petition" for c in cases):
-            checks["pending_petition"] = "Pending defendant winding-up petitions:" in summary
+    petitions = sum(
+        c["role"] == "defendant" and c["status"] == "Pending" and c["caseType"] == "Winding-up petition" for c in cases
+    )
+    petition_counts = re.findall(r"Pending defendant winding-up petitions: (\d+)\.", summary)
+    checks["pending_petition_count"] = petition_counts == ([str(petitions)] if petitions else [])
+    judgments = sum(c["role"] == "defendant" and c["status"] == "Judgment entered" for c in cases)
+    judgment_counts = re.findall(r"(\d+) defendant (?:case\(s\) show|case shows|cases show) judgment entered", summary)
+    checks["judgment_count"] = judgment_counts == ([str(judgments)] if judgments else [])
+    pending = [c for c in cases if c["role"] == "defendant" and c["status"] == "Pending"]
+    claim_totals = re.findall(r"Pending defendant claims total (-?RM \d(?:[\d,]*\d)?), not proven liabilities\.", summary)
+    checks["pending_claims_bound_to_status"] = claim_totals == (
+        [amount(sum(c["claimAmount"] for c in pending))] if pending else []
+    )
     forbidden = (
         "financially safe",
         "financially healthy",
@@ -89,12 +102,39 @@ def inspect_summary(company, summary, refined=False):
     return checks
 
 
+def audit_matches(years, summary):
+    clauses = re.findall(r"(?:Audit opinions include [^.]+|FY\d{4} audit opinion: [^.]+)\.", summary)
+    if not years:
+        return not clauses
+    exceptions = {y["financialYear"]: y["audit"]["opinion"].lower() for y in years if y["audit"]["opinion"] != "Unqualified"}
+    latest = years[-1]
+    expected = dict(exceptions)
+    if not exceptions or latest["audit"]["opinion"] == "Unqualified":
+        expected[latest["financialYear"]] = latest["audit"]["opinion"].lower()
+    if len(clauses) != 1:
+        return False
+    clause = clauses[0]
+    if clause.startswith("Audit opinions include "):
+        pairs = re.findall(r"FY(\d{4}): ([^;]+)", clause.removeprefix("Audit opinions include ").removesuffix("."))
+    else:
+        pairs = re.findall(r"FY(\d{4}) audit opinion: (.+)", clause.removesuffix("."))
+    observed = {int(year): opinion for year, opinion in pairs}
+    return len(pairs) == len(expected) and observed == expected
+
+
 def inspect_refined(company, summary):
     """Bind amounts to their named fields and years, not just their presence somewhere."""
     checks = {}
     years = sorted(company["financials"]["years"], key=lambda y: y["financialYear"])
     currency = r"-?RM \d(?:[\d,]*\d)?"
     trend = r"(?:rose|fell|was unchanged)"
+    if len(years) == 1:
+        pattern = rf"Only FY(\d{{4}}) financials are supplied: revenue was ({currency}) and profit after tax was ({currency});"
+        matches = re.findall(pattern, summary)
+        y = years[0]
+        checks["single_year_fields_and_year"] = matches == [
+            (str(y["financialYear"]), amount(y["statements"]["revenue"]), amount(y["statements"]["profitAfterTax"]))
+        ]
     if len(years) > 1:
         pattern = (
             rf"Revenue ({trend}) from ({currency}) \(FY(\d{{4}})\) to ({currency}) \(FY(\d{{4}})\); "
@@ -102,6 +142,26 @@ def inspect_refined(company, summary):
         )
         match = re.search(pattern, summary)
         first, last = years[0], years[-1]
+        if len(years) > 2:
+            previous = years[-2]
+            endpoint_delta = last["statements"]["profitAfterTax"] - first["statements"]["profitAfterTax"]
+            recent_delta = last["statements"]["profitAfterTax"] - previous["statements"]["profitAfterTax"]
+            matches = re.findall(
+                rf"FY(\d{{4}}) profit after tax (rose|fell|was unchanged) versus FY(\d{{4}}) \(({currency})\)\.", summary
+            )
+            required = ((endpoint_delta > 0) - (endpoint_delta < 0)) != ((recent_delta > 0) - (recent_delta < 0))
+            checks["recent_profit_reversal"] = matches == (
+                [
+                    (
+                        str(last["financialYear"]),
+                        "rose" if recent_delta > 0 else "fell" if recent_delta < 0 else "was unchanged",
+                        str(previous["financialYear"]),
+                        amount(previous["statements"]["profitAfterTax"]),
+                    )
+                ]
+                if required
+                else []
+            )
         if match:
             values = match.groups()
             checks["amounts_bound_to_years"] = values[1:5] == (
@@ -172,10 +232,11 @@ def resolve(record, path):
 
 def evaluate(version):
     companies = {c["registrationNumber"]: c for c in load_companies()}
-    lines = (ROOT / "summaries" / f"{version}.jsonl").read_text().splitlines()
+    summary_jsonl, evidence_json = read_snapshot(ROOT, version)
+    lines = summary_jsonl.splitlines()
     rows = [json.loads(line) for line in lines if line.strip()]
-    evidence_file = ROOT / "evaluations" / f"{version}-evidence.json"
-    evidence = {r["registrationNumber"]: r for r in json.loads(evidence_file.read_text())} if evidence_file.exists() else {}
+    evidence = {r["registrationNumber"]: r for r in json.loads(evidence_json)} if evidence_json else {}
+    consistent = mirrors_match(ROOT, version)
     ids = [r["registrationNumber"] for r in rows]
     results = []
     for row in rows:
@@ -190,6 +251,7 @@ def evaluate(version):
             common_checks = {"company_identity", "word_limit", "no_known_unsupported_claims"}
             checks = {key: value for key, value in checks.items() if key in common_checks}
         if version in ("v3", "rules-only", "v4", "v4-rules"):
+            checks["snapshot_exports_match"] = consistent
             e = evidence.get(cid, {})
             checks["evidence_present"] = bool(e) and e.get("summary") == text
             checks["selection_valid"] = bool(e) and e.get("selection_error") is None
@@ -241,6 +303,8 @@ def evaluate(version):
         "challenge_passed": sum(r["passed"] for r in challenge_results),
     }
     return {
+        "artifact_sha256": artifact_revision(summary_jsonl, evidence_json),
+        "summary_sha256": revision(summary_jsonl),
         "metrics": metrics,
         "companies": results,
         "challenge": challenge_results,
