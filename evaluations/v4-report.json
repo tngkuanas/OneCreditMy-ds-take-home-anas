@@ -1,4 +1,5 @@
 {
+  "source_sha256": "2d6310a549af6ea76e034c5f20197d13318312fa78620285cc5b64508f02f6eb",
   "artifact_sha256": "e55d461425e4b2e5e1038c7de8210750dd74a77d8822fc1df074748dca0f6e04",
   "summary_sha256": "18b9c822d4aa01e928144cab5b442928bbecec0f6e83d3033019b51c00c512d2",
   "metrics": {
@@ -9,8 +10,8 @@
     "duplicate_ids": 0,
     "unknown_ids": [],
     "passed_companies": 50,
-    "checks_passed": 1386,
-    "checks_total": 1386,
+    "checks_passed": 1536,
+    "checks_total": 1536,
     "failures_by_check": {},
     "word_count": {
       "min": 52,
@@ -53,6 +54,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -89,6 +93,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -125,6 +132,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -161,6 +171,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -198,6 +211,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -233,6 +249,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -268,6 +287,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -305,6 +327,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -329,6 +354,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -353,6 +381,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -389,6 +420,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -426,6 +460,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -463,6 +500,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -499,6 +539,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -534,6 +577,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -569,6 +615,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -609,6 +658,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -644,6 +696,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -680,6 +735,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -716,6 +774,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -751,6 +812,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -786,6 +850,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -821,6 +888,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -857,6 +927,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -890,6 +963,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -925,6 +1001,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -960,6 +1039,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -995,6 +1077,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1030,6 +1115,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1062,6 +1150,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1097,6 +1188,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1122,6 +1216,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1160,6 +1257,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1194,6 +1294,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1226,6 +1329,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1258,6 +1364,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1293,6 +1402,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1330,6 +1442,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1366,6 +1481,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1401,6 +1519,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1437,6 +1558,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1472,6 +1596,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1504,6 +1631,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1540,6 +1670,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1577,6 +1710,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1612,6 +1748,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1649,6 +1788,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1685,6 +1827,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1720,6 +1865,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }
@@ -1754,6 +1902,9 @@
         "snapshot_exports_match": true,
         "evidence_present": true,
         "selection_valid": true,
+        "evidence_paths_match_facts": true,
+        "follow_up_supported": true,
+        "summary_fully_traced": true,
         "evidence_sentences_present": true,
         "source_paths_resolve": true
       }

@@ -7,8 +7,9 @@ import statistics
 from collections import Counter
 from datetime import date
 
-from company_summaries.artifacts import artifact_revision, mirrors_match, read_snapshot, revision
+from company_summaries.artifacts import artifact_revision, mirrors_match, read_snapshot, records_revision, revision
 from company_summaries.pipeline import ROOT, load_companies, write_json
+from company_summaries.provenance import inspect_evidence
 
 
 def amount(value):
@@ -231,7 +232,9 @@ def resolve(record, path):
 
 
 def evaluate(version):
-    companies = {c["registrationNumber"]: c for c in load_companies()}
+    records = load_companies()
+    source_hash = records_revision(records)
+    companies = {c["registrationNumber"]: c for c in records}
     summary_jsonl, evidence_json = read_snapshot(ROOT, version)
     lines = summary_jsonl.splitlines()
     rows = [json.loads(line) for line in lines if line.strip()]
@@ -256,6 +259,7 @@ def evaluate(version):
             checks["evidence_present"] = bool(e) and e.get("summary") == text
             checks["selection_valid"] = bool(e) and e.get("selection_error") is None
             facts = e.get("facts", [])
+            checks.update(inspect_evidence(companies[cid], text, e))
             checks["evidence_sentences_present"] = bool(facts) and all(f["text"] in text for f in facts)
             try:
                 paths = [p for f in facts for p in f["sources"]] + e.get("follow_up_sources", [])
@@ -303,6 +307,7 @@ def evaluate(version):
         "challenge_passed": sum(r["passed"] for r in challenge_results),
     }
     return {
+        "source_sha256": source_hash,
         "artifact_sha256": artifact_revision(summary_jsonl, evidence_json),
         "summary_sha256": revision(summary_jsonl),
         "metrics": metrics,

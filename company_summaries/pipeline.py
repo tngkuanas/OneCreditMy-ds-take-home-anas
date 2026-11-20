@@ -135,10 +135,13 @@ def run(companies, model=MODEL, offline=False, version="v3", merge=False):
     out = ROOT / "summaries" / f"{output_version}.jsonl"
     evidence_path = ROOT / "evaluations" / f"{output_version}-evidence.json"
     rows, evidence = [], []
-    if merge and out.exists() and evidence_path.exists():
+    snapshot_exists = (ROOT / "evaluations" / f"{output_version}-snapshot.json").exists()
+    if merge and (snapshot_exists or (out.exists() and evidence_path.exists())):
         saved_rows, saved_evidence = read_snapshot(ROOT, output_version)
         rows = [json.loads(line) for line in saved_rows.splitlines() if line.strip()]
         evidence = json.loads(saved_evidence) if saved_evidence else []
+    elif merge and (out.exists() or evidence_path.exists()):
+        raise RuntimeError("Incomplete legacy output pair without a snapshot; run full generation to recover safely")
     for i, company in enumerate(companies, 1):
         facts = fact_builder(company)
         if offline:

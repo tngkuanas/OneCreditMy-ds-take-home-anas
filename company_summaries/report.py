@@ -176,6 +176,10 @@ def main():
             "invented audit opinions and wrong legal counts.",
             "- A single committed snapshot binds summary and evidence; exports must match it. "
             "The viewer rejects stale evaluation revisions and shows the previous snapshot after interrupted publication.",
+            "- Reports fingerprint source records as well as outputs; source changes invalidate cached green checks.",
+            "- Evidence paths must match each fact's source fields and financial years; "
+            "path existence alone does not satisfy the provenance checks.",
+            "- Partial refreshes recover the complete committed collection even when exports are missing.",
             f"- Synthetic stress requirements: v3 {stress['versions']['v3']['passed']}/24; "
             f"v4 {stress['versions']['v4']['passed']}/24.",
             "- These are synthetic regression requirements, including newly added coverage; "

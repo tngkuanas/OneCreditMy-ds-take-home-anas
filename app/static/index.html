@@ -163,7 +163,8 @@ async function renderSummaries() {
       const response = await fetch(`/api/evaluations/${encodeURIComponent(v)}`);
       reports[v] = response.ok ? await response.json() : null;
     }
-    const report = reports[v] && reports[v].artifactSha256 === data.artifactSha256 && data.exportsMatchSnapshot !== false ? reports[v] : null;
+    const report = reports[v] && reports[v].artifactSha256 === data.artifactSha256
+      && company && reports[v].sourceSha256 === company.sourceSha256 && data.exportsMatchSnapshot !== false ? reports[v] : null;
     if (evidence && evidence.summary !== text) evidence = null;
     const result = report && company && report.companies.find((r) => r.registrationNumber === company.registrationNumber);
     const failed = result ? Object.entries(result.checks).filter(([, ok]) => !ok).map(([name]) => name) : [];

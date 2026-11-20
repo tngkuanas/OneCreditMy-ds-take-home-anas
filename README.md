@@ -33,6 +33,8 @@ The model selects optional facts; Python computes figures, preserves required co
 Local model output is cached in `runs/`, with sentence-level source paths in `evaluations/v4-evidence.json`.
 Final versions also have a `*-snapshot.json` containing the committed summary/evidence pair.
 The viewer reads that snapshot; evaluation checks that the JSONL/JSON exports match it.
+Evaluation reports are also bound to the source records. Changing records invalidates old green checks,
+and evidence citations must point to the fields used by each fact.
 Use generation commands to update a final run rather than hand-editing its exports; a new standalone
 `summaries/<version>.jsonl` without a snapshot continues to work in the original viewer format.
 See [evaluations/RESULTS.md](evaluations/RESULTS.md) for measured results and [WALKTHROUGH.md](WALKTHROUGH.md)

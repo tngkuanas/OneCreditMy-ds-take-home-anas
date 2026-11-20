@@ -33,6 +33,8 @@ Use that explanation only once you can follow the code and verify the examples y
 
 `company_summaries/artifacts.py` commits a summary/evidence pair as one snapshot. The JSONL and JSON files remain exports for submission. Failed writes cannot make the viewer combine a new summary with old evidence. Evaluation rejects exports that differ from the snapshot, and old check results are hidden when the committed run changes.
 
+`company_summaries/provenance.py` separately defines which source fields belong to each fact. Financial evidence cannot point at a company name or an unrelated financial year just because that path exists. Evaluation fingerprints cover source records too, so updating the data requires a fresh evaluation before green checks can appear.
+
 ## Follow one company through the code
 
 For `SYN-000029`:

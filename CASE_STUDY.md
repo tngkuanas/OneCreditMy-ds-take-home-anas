@@ -57,9 +57,11 @@ I separate factual checks, scenario coverage and actual reader usefulness. The f
 
 The evaluator reads the original records separately from the renderer. It verifies status, years, required amounts, audit exceptions, legal roles, pending-claim totals, optional figures, source paths, coverage and length.
 
+Evidence paths are checked against a separate field contract for each fact type, including the relevant financial-year indices; merely pointing at an existing field is insufficient. The checks also require the full summary to be accounted for by its facts and supported follow-up. Reports carry a source-record fingerprint as well as an output fingerprint, so editing company records invalidates previously green results. The browser applies the same source check to cached reports.
+
 The stronger checks bind amounts to named fields and years. Swapping the first and last revenue figures cannot pass merely because both numbers still appear somewhere in the paragraph. Other checks detect incorrect trend directions, invented extra currency amounts, missing interim losses and appointment counts that include dates after the record date.
 
-All **50/50** final summaries pass acceptance, with **1,386/1,386** applicable automated checks passing. The median length is **104.5 words**, with a range of **52–134**; **34/50** fall within the original 100–150 word target. The others are shorter, rather than padded with optional detail. Per-company results are saved in `v4-report.json` and the results report. Basic source profiling also checks 508 statement identities; all agree within RM 1. There are 101 null ratio values, which remain unavailable rather than being treated as zero. These are limited integrity checks, not an audit of every ratio definition.
+All **50/50** final summaries pass acceptance, with **1,536/1,536** applicable automated checks passing. The median length is **104.5 words**, with a range of **52–134**; **34/50** fall within the original 100–150 word target. The others are shorter, rather than padded with optional detail. Per-company results are saved in `v4-report.json` and the results report. Basic source profiling also checks 508 statement identities; all agree within RM 1. There are 101 null ratio values, which remain unavailable rather than being treated as zero. These are limited integrity checks, not an audit of every ratio definition.
 
 An adversarial review found gaps in the original checks: swapped single-year revenue/profit, an invented audit opinion, and an incorrect petition count could pass when the evidence repeated the same error. Those cases now fail the complete acceptance command, even with matching summary/evidence files. Audit opinions and litigation counts are checked against the source, and single-year amounts are bound to their fields and year. The viewer also binds check results to the exact summary/evidence revision, rather than displaying stale green results after an update.
 
@@ -78,6 +80,8 @@ I also generated **24 additional synthetic stress cases** using a fixed seed. Th
 These tests exercise the fact builder and renderer with explicit fact requests; they do not measure the model's prioritisation on unseen records. The records are synthetic perturbations of the supplied schema, not independently sourced companies or a held-out real-world test set. Once inspected, they are regression cases. I do not claim statistical generalisation from them.
 
 The automated tests also deliberately corrupt outputs: they swap figures, change years or directions, alter ownership percentages, remove audit warnings and promote claims into liabilities. Cache, partial-update and interrupted-run tests cover operational failures as well as summary content.
+
+A further review tested incorrect but existing evidence paths, changed source records and missing exports. The regression suite now rejects citations to a company name in place of financial statements, rejects stale reports after source changes, and preserves the full committed collection during partial refreshes even when summary or evidence exports are missing. Incomplete legacy output pairs without a recoverable snapshot fail with a recovery instruction instead of overwriting the remaining file.
 
 ### Human evaluation is prepared, not completed
 

@@ -38,6 +38,16 @@ def artifact_revision(summary: str, evidence: str | None) -> str:
     return revision(json.dumps([summary, evidence], ensure_ascii=False))
 
 
+def records_revision(records: list[dict]) -> str:
+    """Fingerprint source content, independent of JSON key and company-row ordering."""
+    ordered = sorted(records, key=lambda row: row["registrationNumber"])
+    return revision(json.dumps(ordered, sort_keys=True, ensure_ascii=False, separators=(",", ":")))
+
+
+def read_records(path: Path) -> list[dict]:
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
 def mirrors_match(root: Path, version: str) -> bool:
     summaries, evidence = read_snapshot(root, version)
     summary_path = root / "summaries" / f"{version}.jsonl"

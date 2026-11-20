@@ -9,7 +9,14 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 from pydantic.alias_generators import to_camel
 
-from company_summaries.artifacts import artifact_revision, mirrors_match, read_snapshot, revision
+from company_summaries.artifacts import (
+    artifact_revision,
+    mirrors_match,
+    read_records,
+    read_snapshot,
+    records_revision,
+    revision,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 COMPANIES = ROOT / "data" / "companies.jsonl"
@@ -93,6 +100,7 @@ class Company(Model):
     relationships: Relationships
     financials: Financials
     litigation: Litigation
+    source_sha256: str | None = None
 
 
 class CompanyListItem(Model):
@@ -160,6 +168,7 @@ class EvaluationResult(Model):
 
 
 class EvaluationReport(Model):
+    source_sha256: str
     artifact_sha256: str
     summary_sha256: str
     metrics: EvaluationMetrics
@@ -190,8 +199,12 @@ def list_companies() -> list[CompanyListItem]:
 
 @app.get("/api/companies/{registration_number}")
 def get_company(registration_number: str) -> Company:
-    for company in load_companies():
+    records = read_records(COMPANIES)
+    source_hash = records_revision(records)
+    for record in records:
+        company = Company.model_validate(record)
         if company.registration_number == registration_number:
+            company.source_sha256 = source_hash
             return company
     raise HTTPException(404, f"No company {registration_number}")
 
@@ -262,6 +275,8 @@ def get_evaluation(version: str) -> EvaluationReport:
     text, evidence = read_snapshot(ROOT, version)
     if report.artifact_sha256 != artifact_revision(text, evidence):
         raise HTTPException(409, "Summary changed; rerun evaluation before showing check results")
+    if report.source_sha256 != records_revision(read_records(COMPANIES)):
+        raise HTTPException(409, "Company records changed; rerun evaluation before showing check results")
     return report
 
 
