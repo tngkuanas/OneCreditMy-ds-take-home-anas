@@ -6,7 +6,7 @@ from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, ConfigDict, ValidationError
+from pydantic import BaseModel, ConfigDict, TypeAdapter, ValidationError
 from pydantic.alias_generators import to_camel
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -110,6 +110,56 @@ class SummaryVersion(Model):
     invalid_lines: list[int]
 
 
+class EvidenceFact(Model):
+    id: str
+    text: str
+    sources: list[str]
+    required: bool
+
+
+class EvidenceRow(Model):
+    registration_number: str
+    summary: str
+    selected: list[str]
+    facts: list[EvidenceFact]
+    follow_up_sources: list[str]
+    response_file: str | None
+    selection_error: str | None
+    model: str | None
+    elapsed_seconds: float | None
+    word_count: int
+
+
+class WordCounts(Model):
+    min: int
+    median: float
+    max: int
+
+
+class EvaluationMetrics(Model):
+    version: str
+    companies: int
+    source_companies: int
+    passed_companies: int
+    checks_passed: int
+    checks_total: int
+    word_count: WordCounts
+    challenge_cases: int
+    challenge_passed: int
+
+
+class EvaluationResult(Model):
+    registration_number: str
+    passed: bool
+    checks: dict[str, bool]
+
+
+class EvaluationReport(Model):
+    metrics: EvaluationMetrics
+    companies: list[EvaluationResult]
+    limitations: str
+
+
 app = FastAPI(title="Company summaries viewer")
 
 
@@ -161,6 +211,30 @@ def get_version(version: str) -> SummaryVersion:
             continue
         summaries[row.registration_number] = row.summary
     return SummaryVersion(summaries=summaries, invalid_lines=invalid_lines)
+
+
+@app.get("/api/evidence/{version}/{registration_number}")
+def get_evidence(version: str, registration_number: str) -> EvidenceRow:
+    if version not in {"v3", "rules-only"}:
+        raise HTTPException(404, "This experiment has no sentence-level evidence")
+    path = ROOT / "evaluations" / f"{version}-evidence.json"
+    if not path.is_file():
+        raise HTTPException(404, "Evidence is not available yet")
+    rows = TypeAdapter(list[EvidenceRow]).validate_json(path.read_text(encoding="utf-8"))
+    for row in rows:
+        if row.registration_number == registration_number:
+            return row
+    raise HTTPException(404, "No evidence for this company")
+
+
+@app.get("/api/evaluations/{version}")
+def get_evaluation(version: str) -> EvaluationReport:
+    if version not in {"v1", "v2", "v3", "rules-only"}:
+        raise HTTPException(404, "Unknown experiment")
+    path = ROOT / "evaluations" / f"{version}-report.json"
+    if not path.is_file():
+        raise HTTPException(404, "Run evaluation first")
+    return EvaluationReport.model_validate_json(path.read_text(encoding="utf-8"))
 
 
 app.mount("/", StaticFiles(directory=ROOT / "app" / "static", html=True), name="static")

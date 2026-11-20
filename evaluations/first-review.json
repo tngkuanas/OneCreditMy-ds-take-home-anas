@@ -1,0 +1,34 @@
+{
+  "reviews": [
+    {
+      "registrationNumber": "SYN-000029",
+      "version": "v1",
+      "reviewer": "Codex, source-record comparison; not independent human evaluation",
+      "word_count": 207,
+      "accepted": false,
+      "findings": [
+        "Says five shareholder directors; record lists four shareholders and five directors.",
+        "207 words exceeds 100\u2013150 target.",
+        "Same audit firm does not support an independence concern.",
+        "Director appointments do not support suggested governance concerns.",
+        "Free cash flow was negative in every supplied year; turned negative is misleading.",
+        "Financial figures quoted were checked against the supplied record."
+      ]
+    },
+    {
+      "registrationNumber": "SYN-000029",
+      "version": "v2",
+      "reviewer": "Codex, source-record comparison; not independent human evaluation",
+      "word_count": 206,
+      "accepted": false,
+      "findings": [
+        "Shareholder count corrected to four.",
+        "206 words exceeds 100\u2013150 target.",
+        "Still raises unsupported audit independence concern despite explicit instruction.",
+        "Elevated days sales outstanding and adequate current assets lack a stated benchmark.",
+        "FY2023 free cash flow is -RM8,059, incorrectly rounded to RM9k.",
+        "Financial condition and ownership commentary needs further grounding."
+      ]
+    }
+  ]
+}

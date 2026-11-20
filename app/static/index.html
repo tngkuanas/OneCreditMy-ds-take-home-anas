@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Company summaries</title>
+<title>Company screening · Evidence-backed summaries</title>
 <style>
-  body { margin: 0; font: 14px/1.5 system-ui, sans-serif; color: #1f2933; display: grid; grid-template-columns: 240px minmax(0, 1fr) minmax(480px, 1.2fr); height: 100vh; }
+  body { margin: 0; font: 14px/1.6 system-ui, sans-serif; color: #233448; background: #fff; display: grid; grid-template-columns: 235px minmax(0, 1fr) minmax(480px, 1.2fr); height: 100vh; }
   aside, main, section { overflow-y: auto; padding: 16px; }
   aside { border-right: 1px solid #e4e7eb; }
-  section { border-left: 1px solid #e4e7eb; background: #f8fafc; }
+  section { border-left: 1px solid #e4e7eb; background: #f4f6f8; }
+  aside { background: #fafbfc; }
   input, select { width: 100%; box-sizing: border-box; padding: 6px; margin-bottom: 8px; font: inherit; }
   ul { list-style: none; padding: 0; margin: 0; }
   li.company { padding: 6px 8px; cursor: pointer; border-radius: 4px; }
@@ -30,16 +31,34 @@
   .summary ol { list-style: decimal; padding-left: 20px; }
   .version { margin: 0 0 8px; font-size: 12px; color: #616e7c; text-transform: uppercase; letter-spacing: 0.04em; }
   .warn { color: #b44d12; }
+  .brand { font-size: 17px; letter-spacing: -0.4px; margin: 0 0 4px; }
+  .caption { color: #657387; font-size: 12px; margin: 0 0 18px; }
+  .summary { box-shadow: 0 2px 8px #23344808; border-top: 3px solid #426b7c; }
+  .version { font-weight: 650; color: #345968; }
+  .metadata { border-bottom: 1px solid #edf0f3; padding-bottom: 10px; margin-bottom: 12px; font-size: 12px; color: #657387; }
+  .badge { display: inline-block; background: #edf5f1; color: #35644b; padding: 2px 7px; border-radius: 4px; margin: 3px 0; }
+  .badge.failed { background: #fff1e5; color: #9e4d15; }
+  details { border-top: 1px solid #e4e7eb; margin-top: 16px; padding-top: 10px; }
+  summary { cursor: pointer; color: #345968; font-weight: 600; font-size: 12px; }
+  .evidence { border-left: 2px solid #d8e3e9; margin: 12px 0; padding-left: 9px; font-size: 12px; }
+  .evidence p { margin: 4px 0; }
+  .source { display: block; color: #657387; font: 11px/1.6 ui-monospace, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .scope { font-size: 11px; color: #657387; }
+  @media (max-width: 1100px) { body { grid-template-columns: 200px minmax(0, 1fr); height: auto; } aside { height: 100vh; position: sticky; top: 0; grid-row: span 2; } main, section { overflow: visible; } section { grid-column: 2; border-top: 1px solid #e4e7eb; } }
+  @media (max-width: 650px) { body { display: block; } aside { position: static; height: auto; } #companies { max-height: 180px; overflow-y: auto; } nav { gap: 10px; flex-wrap: wrap; } .side-by-side { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
 <aside>
+  <h2 class="brand">Company screening</h2>
+  <p class="caption">50 synthetic records · As of 31 Dec 2025</p>
   <input id="filter" placeholder="Filter companies">
   <ul id="companies"></ul>
 </aside>
 <main id="company"><p class="muted">Pick a company.</p></main>
 <section>
-  <h2 style="margin-top:0">Summary</h2>
+  <h2 style="margin:0">First-pass review</h2>
+  <p class="caption">Read the summary, then check the evidence. This supports further review; it is not an approval decision.</p>
   <div class="side-by-side">
     <label>Version <select id="versionA"></select></label>
     <label>Compare with <select id="versionB"></select></label>
@@ -81,6 +100,8 @@ function markdown(text) {
 
 let current = null, tab = "overview";
 const versions = {};
+const reports = {};
+let summaryRender = 0;
 
 const tabs = {
   overview: (c) => {
@@ -125,13 +146,37 @@ async function loadVersion(v) {
 }
 
 async function renderSummaries() {
+  const render = ++summaryRender;
+  const company = current;
   const out = [];
   for (const v of [$("versionA").value, $("versionB").value].filter(Boolean)) {
     const data = await loadVersion(v);
-    const text = current && data.summaries[current.registrationNumber];
+    const text = company && data.summaries[company.registrationNumber];
     const warn = data.invalidLines.length ? `<p class="warn">Couldn't read line(s) ${data.invalidLines.join(", ")} of summaries/${esc(v)}.jsonl.</p>` : "";
-    out.push(`<div class="summary"><div class="version">${esc(v)}</div>${warn}${text ? markdown(text) : `<p class="muted">No summary for this company in this version.</p>`}</div>`);
+    let evidence = null;
+    if (company && ["v3", "rules-only"].includes(v)) {
+      const response = await fetch(`/api/evidence/${encodeURIComponent(v)}/${encodeURIComponent(company.registrationNumber)}`);
+      if (response.ok) evidence = await response.json();
+    }
+    if (!(v in reports)) {
+      const response = await fetch(`/api/evaluations/${encodeURIComponent(v)}`);
+      reports[v] = response.ok ? await response.json() : null;
+    }
+    const report = reports[v];
+    const result = report && company && report.companies.find((r) => r.registrationNumber === company.registrationNumber);
+    const failed = result ? Object.entries(result.checks).filter(([, ok]) => !ok).map(([name]) => name) : [];
+    const status = result ? `<span class="badge ${result.passed ? "" : "failed"}">${result.passed ? "Source checks passed" : `${failed.length} check(s) need review`}</span>` : "";
+    const metadata = text ? `<div class="metadata">${text.trim().split(/\s+/).length} words · ${evidence ? esc(evidence.model || "Rules only") : "Free-form experiment"}<br>${status}</div>` : "";
+    const sourceValue = (path) => {
+      let value = company;
+      for (const part of path.split(".")) value = value == null ? null : value[part];
+      return JSON.stringify(value);
+    };
+    const trail = evidence ? `<details><summary>Trace ${evidence.facts.length} facts to the record</summary>${evidence.facts.map((f) => `<div class="evidence"><p>${esc(f.text)}</p>${f.sources.map((path) => `<span class="source">${esc(path)} → ${esc(sourceValue(path))}</span>`).join("")}</div>`).join("")}<p class="scope">Follow-up question based on: ${evidence.followUpSources.map(esc).join(", ")}. ${evidence.selectionError ? `Model selection rejected: ${esc(evidence.selectionError)}.` : ""}</p></details>` : "";
+    const checks = report && result ? `<details><summary>Checks and their limits</summary><p class="scope">${esc(report.limitations)}</p><p class="scope">${report.metrics.passedCompanies}/${report.metrics.companies} summaries passed this version's checks. ${report.metrics.challengePassed}/${report.metrics.challengeCases} challenge cases passed.</p>${failed.length ? `<p class="warn">${failed.map(esc).join(", ")}</p>` : ""}</details>` : "";
+    out.push(`<div class="summary"><div class="version">${esc(v)}${v === "v3" ? " · Final" : v === "rules-only" ? " · Comparison" : " · Early experiment"}</div>${metadata}${warn}${text ? markdown(text) : `<p class="muted">No summary for this company in this version.</p>`}${trail}${checks}</div>`);
   }
+  if (render !== summaryRender) return;
   $("summaries").innerHTML = out.join("") || `<p class="muted">No summaries yet. Write one line per company to <code>summaries/&lt;version&gt;.jsonl</code>, then refresh.</p>`;
 }
 
@@ -150,6 +195,8 @@ async function init() {
   const vs = await (await fetch("/api/summaries")).json();
   $("versionA").innerHTML = vs.map((v) => `<option>${esc(v)}</option>`).join("") || `<option value="">none yet</option>`;
   $("versionB").innerHTML = `<option value="">nothing</option>` + vs.map((v) => `<option>${esc(v)}</option>`).join("");
+  if (vs.includes("v3")) $("versionA").value = "v3";
+  if (vs.includes("rules-only")) $("versionB").value = "rules-only";
   $("versionA").onchange = $("versionB").onchange = renderSummaries;
   if (list.length) selectCompany(list[0].registrationNumber);
 }

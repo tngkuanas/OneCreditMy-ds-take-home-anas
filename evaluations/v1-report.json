@@ -1,0 +1,39 @@
+{
+  "metrics": {
+    "version": "v1",
+    "companies": 1,
+    "source_companies": 50,
+    "coverage": 0.02,
+    "duplicate_ids": 0,
+    "unknown_ids": [],
+    "passed_companies": 0,
+    "checks_passed": 1,
+    "checks_total": 3,
+    "failures_by_check": {
+      "word_limit": 1,
+      "no_known_unsupported_claims": 1
+    },
+    "word_count": {
+      "min": 207,
+      "median": 207,
+      "max": 207
+    },
+    "within_100_150_words": 0,
+    "challenge_cases": 0,
+    "challenge_passed": 0
+  },
+  "companies": [
+    {
+      "registrationNumber": "SYN-000029",
+      "word_count": 207,
+      "passed": false,
+      "checks": {
+        "company_identity": true,
+        "word_limit": false,
+        "no_known_unsupported_claims": false
+      }
+    }
+  ],
+  "challenge": [],
+  "limitations": "Rule checks verify selected source facts and known failure patterns; they do not measure reader usefulness or prove absence of every misleading interpretation. Challenge cases are purposively selected and are not held out."
+}

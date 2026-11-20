@@ -1,5 +1,41 @@
 # DS Take-Home: Company Summaries
 
+## Completed solution
+
+Start with [CASE_STUDY.md](CASE_STUDY.md) for the approach, experiments, results, and limitations.
+The final output is [summaries/v3.jsonl](summaries/v3.jsonl); all 50 companies are included.
+
+```bash
+just setup
+just serve       # viewer at http://localhost:8000; Docker is optional
+just check       # lint, tests, and saved-output evaluation; no LLM calls
+```
+
+The viewer opens on **v3** beside **rules-only**. Expand **Trace facts to the record** to inspect source values.
+For the original free-form failures, select **v1** or **v2** and company **SYN-000029**.
+
+To reproduce generation with the local model:
+
+```bash
+ollama pull qwen3.5:9b
+# Start Ollama first (the desktop app, or `ollama serve` in another terminal).
+just generate    # 50 sequential local API calls; matching cached requests are reused
+just baseline    # rules-only comparison; no model needed
+just evaluate
+```
+
+No API key is needed for Ollama. Model downloads and new local inference are optional for reviewing the saved submission.
+The model selects optional facts; Python computes figures, preserves required concerns, and renders the summary.
+Local model output is cached in `runs/`, with sentence-level source paths in `evaluations/v3-evidence.json`.
+See [evaluations/RESULTS.md](evaluations/RESULTS.md) for measured results and [WALKTHROUGH.md](WALKTHROUGH.md)
+for a short explanation of the code. The final system uses only the Python standard library beyond the supplied viewer dependencies.
+
+API reference: [Ollama chat endpoint](https://docs.ollama.com/api/chat).
+
+---
+
+## Original assessment brief
+
 **tl;dr:** Build a system that writes a short summary of a company, then write a case study on how you built it and how you know it works. We give you 50 companies, and you can use all of them or just a sample. Plan for 6 to 8 hours, ideally over a weekend. Free LLM APIs are all you need.
 
 **Who it's for:** early-career data scientists with 0 to 2 years of experience. Fresh graduates are very welcome.

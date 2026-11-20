@@ -1,0 +1,18 @@
+{
+  "model": "qwen3.5:9b",
+  "provider": "local Ollama HTTP API",
+  "requests": 50,
+  "saved_first_run_seconds": 426.39,
+  "median_request_seconds": 8.92,
+  "input_tokens": 42184,
+  "output_tokens": 639,
+  "selection_errors": 0,
+  "different_from_rules_only": 4,
+  "different_company_ids": [
+    "SYN-000302",
+    "SYN-000333",
+    "SYN-001203",
+    "SYN-001829"
+  ],
+  "cost_note": "No billed API calls; local compute and electricity are not measured."
+}

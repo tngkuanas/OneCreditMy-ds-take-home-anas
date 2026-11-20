@@ -21,7 +21,7 @@ dev = [
 [tool.ruff]
 line-length = 128
 target-version = "py314"
-include = ["app/**/*.py"]
+include = ["app/**/*.py", "company_summaries/**/*.py", "scripts/**/*.py", "tests/**/*.py"]
 
 [tool.ruff.lint]
 select = [

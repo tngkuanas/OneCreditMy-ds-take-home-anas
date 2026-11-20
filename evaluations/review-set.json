@@ -1,0 +1,17 @@
+{
+  "purpose": "Purposive challenge set selected from source records; not a random sample or a held-out test set. Expectations were recorded separately from the renderer. Reviews are AI-assisted, not independent human judgments.",
+  "companies": [
+    {"id": "SYN-000029", "reason": "Revenue growth with falling profit and persistent negative free cash flow", "must_contain": ["RM 5,352,856", "RM 96,805", "-RM 239,509"], "must_not_contain": ["five individual directors", "independence"]},
+    {"id": "SYN-000067", "reason": "Losses, cash outflow and short-term funding gap", "must_contain": ["-RM 7,515,861", "-RM 5,939,447", "RM 4,230,894"]},
+    {"id": "SYN-000165", "reason": "A settled plaintiff claim is not a pending defendant liability", "must_contain": ["1 as plaintiff and 0 as defendant", "None are recorded as pending defendant claims"]},
+    {"id": "SYN-000217", "reason": "Historical disclaimer despite latest clean audit", "must_contain": ["FY2023: disclaimer of opinion", "FY2024: unqualified"]},
+    {"id": "SYN-000286", "reason": "Nonconsecutive years, pending petition and judgment with unknown outcome", "must_contain": ["FY2022", "FY2024", "RM 466,500", "not proven liabilities", "outcome is unspecified", "Pending defendant winding-up petitions: 1"]},
+    {"id": "SYN-000302", "reason": "Missing financial statements", "must_contain": ["No financial statements are supplied", "cannot be assessed"], "must_not_contain": ["FY2024 revenue", "financially healthy"]},
+    {"id": "SYN-000451", "reason": "Negative equity and current-liability gap", "must_contain": ["equity was negative at -RM 18,522", "RM 17,735"]},
+    {"id": "SYN-000545", "reason": "Winding up and historical going-concern uncertainty despite positive profit", "must_contain": ["winding up", "FY2022: unqualified with material uncertainty on going concern", "FY2024: unqualified", "RM 2,502,400"]},
+    {"id": "SYN-000802", "reason": "Only one year: no invented trend", "must_contain": ["Only FY2024 financials", "no multi-year trend can be established", "-RM 2,575,829"]},
+    {"id": "SYN-001203", "reason": "No accounts, with a settled plaintiff case", "must_contain": ["No financial statements are supplied", "1 as plaintiff and 0 as defendant"]},
+    {"id": "SYN-001212", "reason": "Winding up, multiple judgments, no assumed judgment direction", "must_contain": ["winding up", "RM 479,300", "3 defendant case(s) show judgment entered", "outcome is unspecified"]},
+    {"id": "SYN-001569", "reason": "Older disclaimer must not disappear behind latest clean opinion", "must_contain": ["FY2022: disclaimer of opinion", "FY2024: unqualified"]}
+  ]
+}
